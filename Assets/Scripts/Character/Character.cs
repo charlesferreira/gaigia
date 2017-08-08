@@ -2,40 +2,50 @@
 
 public class Character : MonoBehaviour {
 
-    [SerializeField]
-    private CharacterClass @class;
+    [SerializeField] private StatsSheet baseStats;
+    [SerializeField] private Weapon weapon;
+    [SerializeField] private Armor armor;
 
-    private Weapon weapon;
-    private Armor armor;
+    private StatsSheet myStats;
+    private int hp;
 
-    public CharacterStats Stats { get; private set; }
+    public StatsSheet BaseStats { get { return baseStats ?? StatsSheet.Blank; } }
+    public Weapon Weapon { get { return weapon ?? Weapon.Unarmed; } }
+    public Armor Armor { get { return armor ?? Armor.Naked; } }
 
-    private void Start() {
-        ResetStats();
+    public int Hp { get { return hp; } }
+
+    public void Equip(Weapon weapon) {
+        this.weapon = weapon;
+        CalculateStats();
     }
 
-    private void ResetStats() {
-        Stats = @class.Stats + weapon.Stats + armor.Stats;
+    public void RemoveWeapon() {
+        weapon = Weapon.Unarmed;
+        CalculateStats();
     }
 
-    public void Equip(Equipment equipment) {
-        if (equipment is Weapon)
-            weapon = (Weapon)equipment;
-        else
-            armor = (Armor)equipment;
-
-        Stats += equipment.Stats;
-        Inventory.Instance.Remove(equipment);
+    public void Equip(Armor armor) {
+        this.armor = armor;
+        CalculateStats();
     }
 
-    public void Remove(Equipment equipment) {
-        if (equipment is Weapon)
-            weapon = null;
-        else
-            armor = null;
-
-        Stats -= equipment.Stats;
-        Inventory.Instance.Add(equipment);
+    public void RemoveArmor() {
+        armor = Armor.Naked;
+        CalculateStats();
     }
 
+    private void Awake() {
+        CalculateStats();
+        ReplenishLifeAndEnergy();
+    }
+
+    private void CalculateStats() {
+        myStats = BaseStats + Weapon.BonusStats + Armor.BonusStats;
+        print(myStats.Vitality);
+    }
+
+    private void ReplenishLifeAndEnergy() {
+        hp = myStats.MaxHp;
+    }
 }

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Character Movement Warrior
+  m_Controller: {fileID: 9100000, guid: bb32eeca7bc28cc40bff74457e7dfe67, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: dd6b79168a4e94140a661d823283ab66, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1fdbcc64e5910064896ebbdb8081e225, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 19ad8a08a0e98c042bcf4d7fdd4e72ad, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: cded69190ba69324397bfd92b8b6c685, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: fbe106a2ae043bf4bba652f27a6f801a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d8727c3e6a2150144967815af9cc116a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 14f1c885bdb73ed4d9d0af727da4a537, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: cbe63b430501e794ebb34ea4e7134afd, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ce89108a1df039b4aae3f29549370e60, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 615f836cf48b02142969636adc0c963d, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 81e85c029764e894aa22423b04a1b5ec, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 60a59d202a389ce4eb7dabc3d9a40f14, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7ecf15adc01611e458e6cec2f1fd2145, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 45d20b34e0fed0b49a0a8f03a439f3f4, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: b6e08aab000fd4c4193472c50af9435c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 11823183bed19994abbb8b76817ebe00, type: 2}

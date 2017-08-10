@@ -7,14 +7,14 @@ public class BattleManager : Singleton<BattleManager>, IBattleStateMachine {
     private IBattleState currentState;
 
     private IList<Character> characters;
-    private Character currentCharacter;
+    public Character currentCharacter;
 
     public Character CurrentCharacter { get { return currentCharacter; } }
 
     protected BattleManager() { }
 
     public void StartBattle(Party enemyParty) {
-        characters = enemyParty.Members;
+        characters.Clear();
         foreach (var enemyPrefab in enemyParty.Members) {
             var enemy = Instantiate(enemyPrefab);
             characters.Add(enemy);
@@ -26,6 +26,10 @@ public class BattleManager : Singleton<BattleManager>, IBattleStateMachine {
     public void SetState<T>() where T : IBattleState {
         currentState = states.OfType<T>().First();
         currentState.OnStateEnter(this);
+    }
+
+    private void Awake() {
+        characters = new List<Character>();
     }
 
     private void Start() {

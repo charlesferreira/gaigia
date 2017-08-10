@@ -9,11 +9,11 @@ public class Character : MonoBehaviour {
     private StatsSheet myStats;
     private int hp;
 
-    public StatsSheet BaseStats { get { return baseStats ?? StatsSheet.Blank; } }
-    public Weapon Weapon { get { return weapon ?? Weapon.Unarmed; } }
-    public Armor Armor { get { return armor ?? Armor.Naked; } }
+    public StatsSheet Stats { get { return myStats; } }
 
-    public int Hp { get { return hp; } }
+    private StatsSheet BaseStats { get { return baseStats ?? StatsSheet.Blank; } }
+    private Weapon Weapon { get { return weapon ?? Weapon.Unarmed; } }
+    private Armor Armor { get { return armor ?? Armor.Naked; } }
 
     public void Equip(Weapon weapon) {
         this.weapon = weapon;

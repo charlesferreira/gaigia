@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Character))]
 public class CharacterMovement : MonoBehaviour {
 
@@ -8,6 +9,7 @@ public class CharacterMovement : MonoBehaviour {
     private static float animationSpeedFactor = 2f;
     private static float movementSpeedFactor = 0.25f;
 
+    Rigidbody rb;
     Character character;
     CharacterAnimations anim;
 
@@ -18,11 +20,12 @@ public class CharacterMovement : MonoBehaviour {
     }
 
     private void Awake() {
+        rb = GetComponentInChildren<Rigidbody>();
         character = GetComponentInChildren<Character>();
         anim = GetComponentInChildren<CharacterAnimations>();
     }
 
-    private void Update() {
+    private void FixedUpdate() {
         var input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         if (input != Vector2.zero)
             Walk(input);
@@ -30,9 +33,15 @@ public class CharacterMovement : MonoBehaviour {
             Stop();
     }
 
+    public void SetActive(bool active) {
+        Stop();
+        enabled = active;
+        rb.isKinematic = !active;
+    }
+
     private void Walk(Vector2 input) {
         // move
-        transform.Translate(new Vector3(input.x, 0, input.y) * MovementSpeed * Time.deltaTime);
+        transform.Translate(new Vector3(input.x, 0, input.y) * MovementSpeed * Time.fixedDeltaTime);
 
         // update animation
         anim.Face(input);

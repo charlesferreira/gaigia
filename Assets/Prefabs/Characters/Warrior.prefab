@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 136029454411932980}
   - component: {fileID: 23129577022398724}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: Hit Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,7 +56,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4176448170183106}
-  - component: {fileID: 114082076064121170}
+  - component: {fileID: 54472203680954994}
+  - component: {fileID: 114720590937595690}
+  - component: {fileID: 114474208644870490}
   m_Layer: 0
   m_Name: Warrior
   m_TagString: Untagged
@@ -111,7 +113,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1268778645578268}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 1
@@ -144,6 +146,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1268778645578268}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54472203680954994
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1865965430294768}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
 --- !u!95 &95351147871436294
 Animator:
   serializedVersion: 3
@@ -161,17 +178,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114082076064121170
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1865965430294768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a63f339671b13b14b8f29d232027bf8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114129512687854578
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -192,6 +198,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1639ad1613e4c9c459816099d4037608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114474208644870490
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1865965430294768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fcd841474a1d0b49b14487513b472ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseStats: {fileID: 11400000, guid: e3a4cccdc5c99734cafbd71236179ab0, type: 2}
+  weapon: {fileID: 0}
+  armor: {fileID: 0}
+--- !u!114 &114720590937595690
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1865965430294768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a63f339671b13b14b8f29d232027bf8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!136 &136029454411932980

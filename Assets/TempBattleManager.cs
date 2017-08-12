@@ -5,6 +5,9 @@ using UnityEngine;
 public class TempBattleManager : MonoBehaviour {
 
     public List<Character> characters;
+    public MovementArea movementArea;
+    public SkillRange skillRange;
+    public BattleCamera battleCamera;
 
     int activeCharacterIndex;
     Character ActiveCharacter { get { return characters[activeCharacterIndex]; } }
@@ -30,5 +33,8 @@ public class TempBattleManager : MonoBehaviour {
         for (var i = 0; i < characters.Count; i++) {
             characters[i].GetComponent<CharacterMovement>().SetActive(i == activeCharacterIndex);
         }
+        movementArea.SetUp(ActiveCharacter);
+        skillRange.SetUp(ActiveCharacter);
+        battleCamera.SetUp(ActiveCharacter.transform);
     }
 }

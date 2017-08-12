@@ -16,7 +16,6 @@ public partial class CharacterAnimations : MonoBehaviour {
 
     public void SetState(CharacterAnimationState newState) {
         if (currentState != newState) {
-            print(newState.ToString());
             anim.SetTrigger(newState.ToString());
         }
         currentState = newState;
@@ -28,8 +27,8 @@ public partial class CharacterAnimations : MonoBehaviour {
 
     private Direction GetDirection(Vector2 vec) {
         return Mathf.Abs(vec.x) > Mathf.Abs(vec.y)
-                    ? (vec.x > 0 ? Direction.Left : Direction.Right)
-                    : (vec.y > 0 ? Direction.Up : Direction.Down);
+                    ? (vec.x < 0 ? Direction.Left : Direction.Right)
+                    : (vec.y < 0 ? Direction.Down : Direction.Up);
     }
 
     private void Awake() {

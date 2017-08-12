@@ -42,6 +42,5 @@ public class Character : MonoBehaviour {
 
     private void CalculateStats() {
         myStats = BaseStats + Weapon.BonusStats + Armor.BonusStats;
-        print(myStats.Vitality);
     }
 }

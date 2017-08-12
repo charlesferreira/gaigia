@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class TempBattleManager : MonoBehaviour {
 
-    public List<Character> characters;
-    public MovementArea movementArea;
-    public SkillRange skillRange;
-    public BattleCamera battleCamera;
+    [SerializeField] private List<Character> characters;
+    [SerializeField] private MovementArea movementArea;
+    [SerializeField] private SkillRange skillRange;
+    [SerializeField] private BattleCamera battleCamera;
+    [SerializeField] private SkillSetHUD skillSetHUD;
 
     int activeCharacterIndex;
     Character ActiveCharacter { get { return characters[activeCharacterIndex]; } }
@@ -35,6 +35,7 @@ public class TempBattleManager : MonoBehaviour {
         }
         movementArea.SetUp(ActiveCharacter);
         skillRange.SetUp(ActiveCharacter);
+        skillSetHUD.SetUp(ActiveCharacter.GetComponent<SkillSet>());
         battleCamera.SetUp(ActiveCharacter.transform);
     }
 }

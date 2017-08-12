@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 54472203680954994}
   - component: {fileID: 114720590937595690}
   - component: {fileID: 114474208644870490}
+  - component: {fileID: 114363784267864388}
   m_Layer: 0
   m_Name: Warrior
   m_TagString: Untagged
@@ -76,8 +77,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4589715855416012}
   - {fileID: 4182211983921670}
+  - {fileID: 4589715855416012}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -92,7 +93,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4176448170183106}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4589715855416012
 Transform:
@@ -100,12 +101,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1027114488182562}
-  m_LocalRotation: {x: -0, y: 0.87219554, z: 0.48915744, w: 0}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 1.1, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 4176448170183106}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23129577022398724
 MeshRenderer:
@@ -189,6 +190,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab94d96b9ac604c4d8880a5b7c11fe78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114363784267864388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1865965430294768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f997fbe8d24cff74d92bd5a5cf52e0c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skills: []
 --- !u!114 &114391669605539698
 MonoBehaviour:
   m_ObjectHideFlags: 1

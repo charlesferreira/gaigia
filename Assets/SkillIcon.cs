@@ -9,7 +9,7 @@ public class SkillIcon : MonoBehaviour {
     }
 
     public void SetPosition(float radius, float angleRatio) {
-        transform.rotation = Quaternion.AngleAxis(360 * angleRatio, Vector3.forward);
+        transform.rotation = Quaternion.AngleAxis(360 * angleRatio, Vector3.back);
         icon.position = transform.position + transform.up * radius;
     }
 }

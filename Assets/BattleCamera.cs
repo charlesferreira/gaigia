@@ -10,6 +10,9 @@ public class BattleCamera : MonoBehaviour {
     [Range(0, 1)]
     [SerializeField]
     private float damping;
+    [Range(1, 1000)]
+    [SerializeField]
+    private float speed;
 
     Vector3 panOffset;
 
@@ -17,7 +20,7 @@ public class BattleCamera : MonoBehaviour {
         this.target = target;
     }
 
-    private void FixedUpdate() {
+    private void LateUpdate() {
         if (target == null) return;
 
         UpdateOffset();
@@ -25,11 +28,11 @@ public class BattleCamera : MonoBehaviour {
     }
 
     private void UpdateOffset() {
-        panOffset.Set(Input.GetAxis("RightHorizontal"), 0, Input.GetAxis("RightVertical"));
+        panOffset.Set(Input.GetAxis("Right Horizontal"), 0, Input.GetAxis("Right Vertical"));
     }
 
     private void UpdatePosition() {
         var distance = target.position + (panOffset * panDistance) - transform.position;
-        transform.position += distance * (1f - damping);
+        transform.position += distance * (1f - damping) * speed * Time.deltaTime;
     }
 }

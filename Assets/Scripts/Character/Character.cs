@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(SkillSet))]
+[RequireComponent(typeof(CharacterMovement))]
 public class Character : MonoBehaviour {
 
     [SerializeField] private TeamFlag teamFlag;
@@ -9,12 +11,20 @@ public class Character : MonoBehaviour {
 
     private StatsSheet myStats;
 
+    SkillSet skillSet;
+    CharacterMovement movement;
+
     public StatsSheet Stats { get { return myStats; } }
     public TeamFlag TeamFlag { get { return teamFlag; } }
 
     private StatsSheet BaseStats { get { return baseStats ?? StatsSheet.Blank; } }
     private Weapon Weapon { get { return weapon ?? Weapon.Unarmed; } }
     private Armor Armor { get { return armor ?? Armor.Naked; } }
+
+    public void SetActive(bool active) {
+        movement.SetActive(active);
+        skillSet.SetActive(active);
+    }
 
     public void Equip(Weapon weapon) {
         this.weapon = weapon;
@@ -37,6 +47,8 @@ public class Character : MonoBehaviour {
     }
 
     private void Awake() {
+        skillSet = GetComponent<SkillSet>();
+        movement = GetComponent<CharacterMovement>();
         CalculateStats();
     }
 

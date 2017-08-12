@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(Character))]
 public class CharacterMovement : MonoBehaviour {
 
     private static float animationSpeedMin = 1.0f;
@@ -26,7 +25,7 @@ public class CharacterMovement : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        var input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        var input = new Vector2(PlayerInput.LeftStickHorizontal, PlayerInput.LeftStickVertical);
         if (input != Vector2.zero)
             Walk(input);
         else

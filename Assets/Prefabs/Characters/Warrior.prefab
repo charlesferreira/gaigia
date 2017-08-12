@@ -57,9 +57,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4176448170183106}
   - component: {fileID: 54472203680954994}
-  - component: {fileID: 114720590937595690}
-  - component: {fileID: 114474208644870490}
-  - component: {fileID: 114363784267864388}
+  - component: {fileID: 114168719808902148}
+  - component: {fileID: 114993293818201376}
+  - component: {fileID: 114261376699542310}
   m_Layer: 0
   m_Name: Warrior
   m_TagString: Untagged
@@ -101,7 +101,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1027114488182562}
-  m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
+  m_LocalRotation: {x: 0.42261827, y: -0, z: -0, w: 0.9063079}
   m_LocalPosition: {x: 0, y: 1.1, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab94d96b9ac604c4d8880a5b7c11fe78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114363784267864388
+--- !u!114 &114168719808902148
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -198,22 +198,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1865965430294768}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f997fbe8d24cff74d92bd5a5cf52e0c2, type: 3}
+  m_Script: {fileID: 11500000, guid: a63f339671b13b14b8f29d232027bf8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skills: []
---- !u!114 &114391669605539698
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1027114488182562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1639ad1613e4c9c459816099d4037608, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114474208644870490
+--- !u!114 &114261376699542310
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -228,7 +216,18 @@ MonoBehaviour:
   baseStats: {fileID: 11400000, guid: e3a4cccdc5c99734cafbd71236179ab0, type: 2}
   weapon: {fileID: 0}
   armor: {fileID: 0}
---- !u!114 &114720590937595690
+--- !u!114 &114391669605539698
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1027114488182562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1639ad1613e4c9c459816099d4037608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114993293818201376
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -236,9 +235,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1865965430294768}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a63f339671b13b14b8f29d232027bf8b, type: 3}
+  m_Script: {fileID: 11500000, guid: f997fbe8d24cff74d92bd5a5cf52e0c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skills:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!136 &136029454411932980
 CapsuleCollider:
   m_ObjectHideFlags: 1

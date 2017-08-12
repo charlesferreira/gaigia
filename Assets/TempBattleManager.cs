@@ -18,7 +18,7 @@ public class TempBattleManager : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.GetButtonDown("Fire1")) {
+        if (PlayerInput.Confirm) {
             SelectNextCharacter();
         }
     }
@@ -31,7 +31,7 @@ public class TempBattleManager : MonoBehaviour {
 
     private void ActivateCurrentCharacter() {
         for (var i = 0; i < characters.Count; i++) {
-            characters[i].GetComponent<CharacterMovement>().SetActive(i == activeCharacterIndex);
+            characters[i].SetActive(i == activeCharacterIndex);
         }
         movementArea.SetUp(ActiveCharacter);
         skillRange.SetUp(ActiveCharacter);

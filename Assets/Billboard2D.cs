@@ -3,7 +3,7 @@
 [ExecuteInEditMode]
 public class Billboard2D : MonoBehaviour {
 
-    private void Update() {
+    private void LateUpdate() {
         transform.right = Camera.main.transform.right;
     }
 

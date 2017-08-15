@@ -216,6 +216,7 @@ MonoBehaviour:
   baseStats: {fileID: 11400000, guid: e3a4cccdc5c99734cafbd71236179ab0, type: 2}
   weapon: {fileID: 0}
   armor: {fileID: 0}
+  avatar: {fileID: 21300000, guid: eee31482f127e4e40b996469dd0d17fd, type: 3}
 --- !u!114 &114391669605539698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -239,10 +240,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skills:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: f120f65167284544b9dc010d83b2063f, type: 2}
+  - {fileID: 11400000, guid: 651c7f9bef9c2f043b0040f9a0a5c7ae, type: 2}
+  - {fileID: 11400000, guid: 15ca5a8e34a27034ea3f280d105a0635, type: 2}
+  - {fileID: 11400000, guid: 43b330d080b0cfa4ea0028ecbff55b79, type: 2}
+  - {fileID: 11400000, guid: 484707e966b469b43b7b7fb491364091, type: 2}
+  - {fileID: 11400000, guid: 484707e966b469b43b7b7fb491364091, type: 2}
+  - {fileID: 11400000, guid: 484707e966b469b43b7b7fb491364091, type: 2}
+  - {fileID: 11400000, guid: 484707e966b469b43b7b7fb491364091, type: 2}
 --- !u!136 &136029454411932980
 CapsuleCollider:
   m_ObjectHideFlags: 1

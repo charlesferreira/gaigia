@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class MovementArea : MonoBehaviour {
+public class MovementArea : Singleton<MovementArea> {
 
     public void SetUp(Character character) {
         SetActive(character.TeamFlag == TeamFlag.Player);

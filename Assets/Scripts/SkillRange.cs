@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 
-public class SkillRange : MonoBehaviour {
-    
+public class SkillRange : Singleton<SkillRange> {
+
+
     public void SetUp(Character character) {
         SetActive(character.TeamFlag == TeamFlag.Player);
         SetParent(character.transform);

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [ExecuteInEditMode]
-public class BattleCamera : MonoBehaviour {
+public class BattleCamera : Singleton<BattleCamera> {
 
     [SerializeField] private Transform target;
     [Range(0, 10)]

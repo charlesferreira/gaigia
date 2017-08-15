@@ -11,12 +11,14 @@ public class SkillSet : MonoBehaviour {
 
     public int CurrentSkillIndex {
         get { return currentSkillIndex; }
-        set { currentSkillIndex = (currentSkillIndex + value) % Count; }
+        set { currentSkillIndex = (value + Count) % Count; }
     }
 
     public Skill CurrentSkill { get { return skills[currentSkillIndex]; } }
 
     public int Count { get { return skills.Count; } }
+
+    public Skill this[int key] { get { return Skills[key]; } }
 
     public void SetActive(bool active) {
         enabled = active;
@@ -27,14 +29,12 @@ public class SkillSet : MonoBehaviour {
     }
 
     private void Update() {
-        if (PlayerInput.LeftShoulder) {
+        if (PlayerInput.RightShoulder) {
             CurrentSkillIndex--;
-            SkillSetHUD.Instance.SelectPreviousSkill();
         }
 
-        if (PlayerInput.RightShoulder) {
+        if (PlayerInput.LeftShoulder) {
             CurrentSkillIndex++;
-            SkillSetHUD.Instance.SelectNextSkill();
         }
     }
 }

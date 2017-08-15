@@ -8,14 +8,16 @@ public class Character : MonoBehaviour {
     [SerializeField] private StatsSheet baseStats;
     [SerializeField] private Weapon weapon;
     [SerializeField] private Armor armor;
+    [SerializeField] private Sprite avatar;
 
     private StatsSheet myStats;
 
     SkillSet skillSet;
     CharacterMovement movement;
 
-    public StatsSheet Stats { get { return myStats; } }
     public TeamFlag TeamFlag { get { return teamFlag; } }
+    public StatsSheet Stats { get { return myStats; } }
+    public Sprite Avatar { get { return avatar; } }
 
     private StatsSheet BaseStats { get { return baseStats ?? StatsSheet.Blank; } }
     private Weapon Weapon { get { return weapon ?? Weapon.Unarmed; } }

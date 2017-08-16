@@ -1,8 +1,12 @@
-﻿public interface IBattleStateMachine {
+﻿using System.Collections.Generic;
+
+public interface IBattleStateMachine {
 
     Character ActiveCharacter { get; }
 
-    void SetState<T>() where T : IBattleState;
+    IList<Character> Characters { get; }
 
     void SelectNextCharacter();
+
+    void SetState<T>() where T : IBattleState;
 }

@@ -1,4 +1,4 @@
-﻿public enum TeamFlag {
+﻿public enum Team {
     Player,
-    Enemy
+    Computer
 }

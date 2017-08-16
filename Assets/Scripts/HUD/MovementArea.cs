@@ -3,7 +3,7 @@
 public class MovementArea : Singleton<MovementArea> {
 
     public void SetUp(Character character) {
-        SetActive(character.TeamFlag == TeamFlag.Player);
+        SetActive(character.Team == Team.Player);
         SetPosition(character.transform.position);
     }
 

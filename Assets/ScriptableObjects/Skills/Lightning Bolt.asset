@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7289a9570448e69498e1ac829f68d423, type: 3}
   m_Name: Lightning Bolt
   m_EditorClassIdentifier: 
+  targetFlag: 4
   icon: {fileID: 21300022, guid: ba8d40673cd44f943ab353968d692e1f, type: 3}
   _name: Lightning
-  range: 7.5
+  range: 1

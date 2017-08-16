@@ -212,11 +212,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fcd841474a1d0b49b14487513b472ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teamFlag: 0
+  team: 0
+  avatar: {fileID: 21300000, guid: eee31482f127e4e40b996469dd0d17fd, type: 3}
   baseStats: {fileID: 11400000, guid: e3a4cccdc5c99734cafbd71236179ab0, type: 2}
   weapon: {fileID: 0}
   armor: {fileID: 0}
-  avatar: {fileID: 21300000, guid: eee31482f127e4e40b996469dd0d17fd, type: 3}
 --- !u!114 &114391669605539698
 MonoBehaviour:
   m_ObjectHideFlags: 1

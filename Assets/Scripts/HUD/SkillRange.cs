@@ -1,16 +1,15 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SkillRange : Singleton<SkillRange> {
 
     public void SetUp(Character character) {
-        SetActive(character.TeamFlag == TeamFlag.Player);
+        SetActive(character.Team == Team.Player);
         SetParent(character.transform);
         SetSkill(character.GetComponent<SkillSet>().CurrentSkill);
     }
 
     public void SetSkill(Skill skill) {
-        transform.localScale = Vector3.one * skill.Range;
+        transform.localScale = Vector3.one * skill.Range * 2;
     }
 
     private void SetActive(bool active) {

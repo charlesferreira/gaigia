@@ -22,10 +22,11 @@ public class ActionSequence : Singleton<ActionSequence> {
 
     private void Awake() {
         avatars = new List<ActionSequenceAvatar>();
+        CreatePortraits();
     }
 
     private void Start() {
-        CreatePortraits();
+        //CreatePortraits();
     }
 
     private void CreatePortraits() {

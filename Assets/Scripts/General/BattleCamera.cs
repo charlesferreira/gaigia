@@ -5,14 +5,11 @@ public class BattleCamera : Singleton<BattleCamera> {
 
     [SerializeField] private Transform target;
     [Range(0, 10)]
-    [SerializeField]
-    private float panDistance;
+    [SerializeField] private float panDistance;
     [Range(0, 1)]
-    [SerializeField]
-    private float damping;
+    [SerializeField] private float damping;
     [Range(1, 1000)]
-    [SerializeField]
-    private float speed;
+    [SerializeField] private float speed;
 
     Vector3 panOffset;
 
@@ -20,15 +17,14 @@ public class BattleCamera : Singleton<BattleCamera> {
         this.target = target;
     }
 
-    private void LateUpdate() {
-        if (target == null) return;
-
-        UpdateOffset();
-        UpdatePosition();
+    public void Pan(float x, float z) {
+        panOffset.Set(x, 0, z);
     }
 
-    private void UpdateOffset() {
-        panOffset.Set(Input.GetAxis("Right Horizontal"), 0, Input.GetAxis("Right Vertical"));
+    private void LateUpdate() {
+        if (target == null) return;
+        
+        UpdatePosition();
     }
 
     private void UpdatePosition() {

@@ -58,16 +58,13 @@ public class SkillSetHUD : Singleton<SkillSetHUD> {
         skillIcons = new List<SkillIcon>();
     }
 
-    private void Update() {
-        skillName.text = skillSet.CurrentSkill.Name;
-    }
-
     private void LateUpdate() {
         if (skillSet == null) return;
 
         var deltaAngle = Mathf.DeltaAngle(RotationAngleFrom, RotationAngleTo);
         var rotationAngle = RotationAngleFrom + deltaAngle * (1f - rotationDamping) * rotationSpeed * Time.deltaTime;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, rotationAngle));
+        skillName.text = skillSet.CurrentSkill.Name;
     }
 
 #if UNITY_EDITOR

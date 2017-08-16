@@ -15,39 +15,48 @@ public class BattleManager : Singleton<BattleManager>, IBattleStateMachine {
     public IList<Character> Characters { get { return characters.AsReadOnly(); } }
 
     public void SetState<T>() where T : IBattleState {
+        if (currentState != null)
+            currentState.OnStateExit(this);
         currentState = states.OfType<T>().First();
         currentState.OnStateEnter(this);
     }
 
+    public void SelectNextCharacter() {
+        activeCharacterIndex += 1;
+        activeCharacterIndex %= characters.Count;
+        ActivateCurrentCharacter();
+    }
+
     private void SetUpStates() {
         states = new List<IBattleState> {
-            new InputBattleState(),
             new SetUpBattleState(),
+            new SelectSkillAndPositionBattleState(),
+            new SelectTargetBattleState(),
         };
         SetState<SetUpBattleState>();
     }
 
+    private void Awake() {
+        SetUpStates();
+    }
+
     private void Start() {
-        activeCharacterIndex = -1;
-        SelectNextCharacter();
+        ActivateCurrentCharacter();
     }
 
     private void Update() {
-        if (PlayerInput.Confirm) {
-            SelectNextCharacter();
-        }
+        currentState.Update(this);
     }
 
-    private void SelectNextCharacter() {
-        activeCharacterIndex += 1;
-        activeCharacterIndex %= characters.Count;
-        ActivateCurrentCharacter();
+    private void FixedUpdate() {
+        currentState.FixedUpdate(this);
     }
 
     private void ActivateCurrentCharacter() {
         for (var i = 0; i < characters.Count; i++) {
             characters[i].SetActive(i == activeCharacterIndex);
         }
+
         MovementArea.Instance.SetUp(ActiveCharacter);
         SkillRange.Instance.SetUp(ActiveCharacter);
         SkillSetHUD.Instance.SetUp(ActiveCharacter.GetComponent<SkillSet>());

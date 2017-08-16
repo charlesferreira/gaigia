@@ -24,21 +24,13 @@ public class CharacterMovement : MonoBehaviour {
         anim = GetComponentInChildren<CharacterAnimations>();
     }
 
-    private void FixedUpdate() {
-        var input = new Vector2(PlayerInput.LeftStickHorizontal, PlayerInput.LeftStickVertical);
-        if (input != Vector2.zero)
-            Walk(input);
-        else
-            Stop();
-    }
-
     public void SetActive(bool active) {
         Stop();
         enabled = active;
         rb.isKinematic = !active;
     }
 
-    private void Walk(Vector2 input) {
+    public void Walk(Vector2 input) {
         // move
         transform.Translate(new Vector3(input.x, 0, input.y) * MovementSpeed * Time.fixedDeltaTime);
 
@@ -48,7 +40,7 @@ public class CharacterMovement : MonoBehaviour {
         anim.SetSpeed(Mathf.Clamp(input.magnitude * animationSpeedFactor, animationSpeedMin, animationSpeedMax));
     }
 
-    private void Stop() {
+    public void Stop() {
         anim.SetState(CharacterAnimationState.Idle);
     }
 }

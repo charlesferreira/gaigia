@@ -241,12 +241,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skills:
   - {fileID: 11400000, guid: f120f65167284544b9dc010d83b2063f, type: 2}
+  - {fileID: 11400000, guid: b768c76418b8cf34fb4494fb5aeae228, type: 2}
   - {fileID: 11400000, guid: 651c7f9bef9c2f043b0040f9a0a5c7ae, type: 2}
-  - {fileID: 11400000, guid: 15ca5a8e34a27034ea3f280d105a0635, type: 2}
   - {fileID: 11400000, guid: 43b330d080b0cfa4ea0028ecbff55b79, type: 2}
-  - {fileID: 11400000, guid: 484707e966b469b43b7b7fb491364091, type: 2}
-  - {fileID: 11400000, guid: 484707e966b469b43b7b7fb491364091, type: 2}
-  - {fileID: 11400000, guid: 484707e966b469b43b7b7fb491364091, type: 2}
   - {fileID: 11400000, guid: 484707e966b469b43b7b7fb491364091, type: 2}
 --- !u!136 &136029454411932980
 CapsuleCollider:

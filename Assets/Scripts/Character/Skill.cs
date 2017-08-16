@@ -10,5 +10,5 @@ public class Skill : ScriptableObject {
 
     public Sprite Icon { get { return icon; } }
     public string Name { get { return _name; } }
-    public string Range { get { return _range; } }
+    public float Range { get { return range; } }
 }

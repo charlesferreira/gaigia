@@ -3,7 +3,7 @@
 [CreateAssetMenu(menuName = "Stats Sheet")]
 public class StatsSheet : ScriptableObject {
 
-    public const float MaxMovementSpeed = 10;
+    public const float MaxMovementSpeed = 50;
 
     [Header("Primary")]
     [SerializeField] private int vitality;

@@ -60,7 +60,7 @@ public class BattleManager : Singleton<BattleManager>, IBattleStateMachine {
         MovementArea.Instance.SetUp(ActiveCharacter);
         SkillRange.Instance.SetUp(ActiveCharacter);
         SkillSetHUD.Instance.SetUp(ActiveCharacter.GetComponent<SkillSet>());
-        BattleCamera.Instance.SetUp(ActiveCharacter.transform);
+        BattleCamera.Instance.SetTarget(ActiveCharacter.transform);
         ActionSequence.Instance.SetUp(ActiveCharacter);
     }
 }

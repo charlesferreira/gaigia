@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 public class SelectTargetBattleState : IBattleState {
 
@@ -65,5 +64,6 @@ public class SelectTargetBattleState : IBattleState {
         if (targets.Count == 0) return;
 
         SkillTarget.Instance.SetTarget(Target);
+        BattleCamera.Instance.SetTarget(Target.transform);
     }
 }

@@ -3,14 +3,16 @@ using UnityEngine;
 
 public class ActionSequence : Singleton<ActionSequence> {
 
-    [SerializeField] private Color neutralColor;
+    [SerializeField] private Color activeColor;
+    [SerializeField] private Color idleColor;
     [SerializeField] private ActionSequenceAvatar avatarPrefab;
     [Range(1, 200)]
     [SerializeField] private float avatarWidth;
 
     private List<ActionSequenceAvatar> avatars;
 
-    public Color NeutralColor { get { return neutralColor; } }
+    public Color IdleColor { get { return idleColor; } }
+    public Color ActiveColor { get { return activeColor; } }
 
     protected ActionSequence() { }
 

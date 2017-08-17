@@ -32,7 +32,7 @@ public class CharacterMovement : MonoBehaviour {
 
     public void Walk(Vector2 input) {
         // move
-        transform.Translate(new Vector3(input.x, 0, input.y) * MovementSpeed * Time.fixedDeltaTime);
+        transform.Translate(new Vector3(input.x, 0, input.y) * MovementSpeed * Time.deltaTime);
 
         // update animation
         anim.Face(input);

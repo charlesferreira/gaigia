@@ -3,7 +3,7 @@
 [ExecuteInEditMode]
 public class Sprite3D : MonoBehaviour {
 
-    private void LateUpdate() {
+    private void Awake() {
         transform.rotation = Camera.main.transform.rotation;
     }
 }

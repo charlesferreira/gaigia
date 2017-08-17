@@ -28,14 +28,14 @@ public class SelectSkillAndPositionBattleState : IBattleState {
         }
 
         BattleCamera.Instance.Pan(PlayerInput.RightStickHorizontal, PlayerInput.RightStickVertical);
-    }
-
-    public void FixedUpdate(IBattleStateMachine fsm) {
         var input = new Vector2(PlayerInput.LeftStickHorizontal, PlayerInput.LeftStickVertical);
         if (input != Vector2.zero)
             characterMovement.Walk(input);
         else
             characterMovement.Stop();
+    }
+
+    public void FixedUpdate(IBattleStateMachine fsm) {
     }
 
 }

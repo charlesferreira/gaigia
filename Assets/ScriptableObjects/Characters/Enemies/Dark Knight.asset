@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e3d86864451c1146955ebc642db33e4, type: 3}
-  m_Name: Warrior
+  m_Name: Dark Knight
   m_EditorClassIdentifier: 
   vitality: 5
   mana: 5
@@ -18,5 +18,5 @@ MonoBehaviour:
   dexterity: 5
   charisma: 5
   luck: 5
-  baseMovement: 8
+  baseMovement: 5
   baseEnergy: 5

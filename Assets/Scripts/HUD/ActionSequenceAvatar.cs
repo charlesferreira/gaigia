@@ -20,10 +20,14 @@ public class ActionSequenceAvatar : MonoBehaviour {
     }
 
     internal void SetActive(Character activeCharacter) {
-        turnLabel.gameObject.SetActive(activeCharacter == character);
+        var active = activeCharacter == character;
+        turnLabel.gameObject.SetActive(active);
+        Color = active
+            ? ActionSequence.Instance.ActiveColor
+            : ActionSequence.Instance.IdleColor;
     }
 
     private void Awake() {
-        Color = ActionSequence.Instance.NeutralColor;
+        Color = ActionSequence.Instance.IdleColor;
     }
 }

@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Name: Melee Attack
   m_EditorClassIdentifier: 
   targetFlag: 4
+  skillPrefab: {fileID: 114333431648264578, guid: 1dcebccac380f35478e613685bad5e0a,
+    type: 2}
   icon: {fileID: 21300108, guid: ba8d40673cd44f943ab353968d692e1f, type: 3}
   _name: Attack
   range: 2

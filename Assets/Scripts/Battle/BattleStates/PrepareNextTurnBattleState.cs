@@ -1,14 +1,14 @@
 ﻿public class PrepareNextTurnBattleState : IBattleState {
 
-    public void OnStateEnter(IBattleStateMachine fsm) {
-        MovementArea.Instance.SetUp(fsm.ActiveCharacter);
-        SkillRange.Instance.SetUp(fsm.ActiveCharacter);
-        SkillSetHUD.Instance.SetUp(fsm.ActiveCharacter);
-        ActionSequence.Instance.SetUp(fsm.ActiveCharacter);
-        fsm.SetState<SelectSkillAndPositionBattleState>();
+    public void OnStateEnter(IBattleStateMachine bsm) {
+        MovementArea.Instance.SetUp(bsm.ActiveCharacter);
+        SkillRange.Instance.SetUp(bsm.ActiveCharacter);
+        SkillSetHUD.Instance.SetUp(bsm.ActiveCharacter);
+        ActionSequence.Instance.SetUp(bsm.ActiveCharacter);
+        bsm.SetState<SelectSkillAndPositionBattleState>();
     }
 
-    public void OnStateExit(IBattleStateMachine fsm) { }
+    public void OnStateExit(IBattleStateMachine bsm) { }
 
-    public void Update(IBattleStateMachine fsm) { }
+    public void Update(IBattleStateMachine bsm) { }
 }

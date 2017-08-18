@@ -1,48 +1,47 @@
-﻿using System.Collections.Generic;
-
-public class SelectTargetBattleState : IBattleState {
+﻿public class SelectTargetBattleState : IBattleState {
 
     private int targetIndex;
 
-    public void OnStateEnter(IBattleStateMachine fsm) {
+    public void OnStateEnter(IBattleStateMachine bsm) {
         targetIndex = 0;
-        FocusOnTarget(fsm.Targets[targetIndex]);
+        UpdateTarget(bsm);
         SkillTarget.Instance.SetActive(true);
     }
 
-    public void OnStateExit(IBattleStateMachine battleManager) {
+    public void OnStateExit(IBattleStateMachine bsm) {
         SkillTarget.Instance.SetActive(false);
     }
 
-    public void Update(IBattleStateMachine fsm) {
+    public void Update(IBattleStateMachine bsm) {
         if (PlayerInput.Cancel) {
-            fsm.SetState<SelectSkillAndPositionBattleState>();
+            bsm.SetState<SelectSkillAndPositionBattleState>();
             return;
         }
 
-        if (PlayerInput.RightShoulder) { SelectNextTarget(fsm.Targets); }
-        if (PlayerInput.LeftShoulder)  { SelectPreviousTarget(fsm.Targets); }
+        if (PlayerInput.RightShoulder) { SelectNextTarget(bsm); }
+        if (PlayerInput.LeftShoulder)  { SelectPreviousTarget(bsm); }
         if (PlayerInput.Confirm) {
-            fsm.SelectNextCharacter();
-            fsm.SetState<ExecuteSkillBattleState>();
+            bsm.SelectNextCharacter();
+            bsm.SetState<CastSkillBattleState>();
         }
     }
 
-    private void SelectNextTarget(IList<Character> targets) {
+    private void SelectNextTarget(IBattleStateMachine bsm) {
         targetIndex += 1;
-        targetIndex %= targets.Count;
-        FocusOnTarget(targets[targetIndex]);
+        targetIndex %= bsm.Targets.Count;
+        UpdateTarget(bsm);
     }
 
-    private void SelectPreviousTarget(IList<Character> targets) {
-        targetIndex -= 1;
-        while (targetIndex < 0)
-            targetIndex += targets.Count;
-        FocusOnTarget(targets[targetIndex]);
+    private void SelectPreviousTarget(IBattleStateMachine bsm) {
+        targetIndex += bsm.Targets.Count - 1;
+        targetIndex %= bsm.Targets.Count;
+        UpdateTarget(bsm);
     }
 
-    private void FocusOnTarget(Character character) {
-        SkillTarget.Instance.SetTarget(character);
-        BattleCamera.Instance.SetTarget(character.transform);
+    private void UpdateTarget(IBattleStateMachine bsm) {
+        var target = bsm.Targets[targetIndex];
+        bsm.ActiveCharacter.Skill.Target = target;
+        SkillTarget.Instance.SetTarget(target);
+        BattleCamera.Instance.SetTarget(target.transform);
     }
 }

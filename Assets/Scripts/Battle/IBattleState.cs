@@ -1,8 +1,8 @@
 ﻿public interface IBattleState {
 
-    void OnStateEnter(IBattleStateMachine fsm);
+    void OnStateEnter(IBattleStateMachine bsm);
 
-    void OnStateExit(IBattleStateMachine battleManager);
+    void OnStateExit(IBattleStateMachine bsm);
 
-    void Update(IBattleStateMachine fsm);
+    void Update(IBattleStateMachine bsm);
 }

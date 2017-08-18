@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(SkillSet))]
 [RequireComponent(typeof(CharacterMovement))]
@@ -28,6 +29,8 @@ public class Character : MonoBehaviour {
     public void SetActive(bool active) {
         movement.SetActive(active);
         skillSet.SetActive(active);
+        if (active)
+            Skill.Source = this;
     }
 
     public void Equip(Weapon weapon) {
@@ -48,6 +51,16 @@ public class Character : MonoBehaviour {
     public void RemoveArmor() {
         armor = Armor.Naked;
         CalculateStats();
+    }
+
+    public void SelectNextSkill() {
+        skillSet.SelectNextSkill();
+        Skill.Source = this;
+    }
+
+    public void SelectPreviousSkill() {
+        skillSet.SelectPreviousSkill();
+        Skill.Source = this;
     }
 
     private void Awake() {

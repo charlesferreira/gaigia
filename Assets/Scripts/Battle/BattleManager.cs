@@ -6,14 +6,13 @@ public class BattleManager : Singleton<BattleManager>, IBattleStateMachine {
 
     [SerializeField] private List<Character> characters;
 
-    int activeCharacterIndex;
-    private List<Character> targets;
     private IBattleState currentState;
     private IList<IBattleState> states;
+    int activeCharacterIndex;
     
     public Character ActiveCharacter { get { return characters[activeCharacterIndex]; } }
-    public IList<Character> Targets { get { return targets.AsReadOnly(); } }
     public IList<Character> Characters { get { return characters.AsReadOnly(); } }
+    public IList<Character> Targets { get; set; }
 
     public void SetState<T>() where T : IBattleState {
         if (currentState != null)
@@ -28,19 +27,13 @@ public class BattleManager : Singleton<BattleManager>, IBattleStateMachine {
         ActivateCurrentCharacter();
     }
 
-    public void UpdateTargets() {
-        targets = characters
-            .Where(x => ActiveCharacter.Skill.Hits(x, ActiveCharacter))
-            .OrderBy(x => x.SqrDistance(ActiveCharacter)).ToList();
-    }
-
     private void SetUpStates() {
         states = new List<IBattleState> {
             new SetUpBattleState(),
             new PrepareNextTurnBattleState(),
             new SelectSkillAndPositionBattleState(),
             new SelectTargetBattleState(),
-            new ExecuteSkillBattleState(),
+            new CastSkillBattleState(),
         };
         SetState<SetUpBattleState>();
     }
@@ -51,7 +44,7 @@ public class BattleManager : Singleton<BattleManager>, IBattleStateMachine {
     }
 
     private void Awake() {
-        targets = new List<Character>();
+        Targets = new List<Character>();
     }
 
     private void Start() {

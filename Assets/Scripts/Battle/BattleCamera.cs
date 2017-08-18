@@ -29,6 +29,6 @@ public class BattleCamera : Singleton<BattleCamera> {
 
     private void UpdatePosition() {
         var distance = target.position + (panOffset * panDistance) - transform.position;
-        transform.position += distance * (1f - damping) * speed * Time.deltaTime;
+        transform.position += distance * (1f - damping) * speed * Time.smoothDeltaTime;
     }
 }

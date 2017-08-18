@@ -2,6 +2,8 @@
 
 public class SkillRange : Singleton<SkillRange> {
 
+    [SerializeField] private SpriteRenderer circle;
+
     public void SetUp(Character character) {
         SetActive(character.Team == Team.Player);
         SetParent(character.transform);
@@ -26,5 +28,11 @@ public class SkillRange : Singleton<SkillRange> {
     private void SetPosition(Vector3 position) {
         position.y = transform.position.y;
         transform.position = position;
+    }
+
+    private void Update() {
+        circle.color = BattleManager.Instance.Targets.Count > 0
+            ? (Color.white)
+            : (Color.white * .75f);
     }
 }

@@ -1,12 +1,10 @@
 ﻿public class SetUpBattleState : IBattleState {
 
     public void OnStateEnter(IBattleStateMachine fsm) {
-        fsm.SetState<SelectSkillAndPositionBattleState>();
+        fsm.SetState<PrepareNextTurnBattleState>();
     }
 
     public void OnStateExit(IBattleStateMachine fsm) { }
 
     public void Update(IBattleStateMachine fsm) { }
-
-    public void FixedUpdate(IBattleStateMachine fsm) { }
 }

@@ -11,17 +11,12 @@ public class CharacterMovement : MonoBehaviour {
     Rigidbody rb;
     Character character;
     CharacterAnimations anim;
+    Vector2 input;
 
     private float MovementSpeed {
         get {
             return Mathf.Min(StatsSheet.MaxMovementSpeed, character.Stats.Movement) * movementSpeedFactor;
         }
-    }
-
-    private void Awake() {
-        rb = GetComponentInChildren<Rigidbody>();
-        character = GetComponentInChildren<Character>();
-        anim = GetComponentInChildren<CharacterAnimations>();
     }
 
     public void SetActive(bool active) {
@@ -31,16 +26,29 @@ public class CharacterMovement : MonoBehaviour {
     }
 
     public void Walk(Vector2 input) {
-        // move
-        transform.Translate(new Vector3(input.x, 0, input.y) * MovementSpeed * Time.deltaTime);
+        if (input == Vector2.zero) {
+            Stop();
+            return;
+        }
 
-        // update animation
+        this.input = input;
         anim.Face(input);
         anim.SetState(CharacterAnimationState.Walking);
         anim.SetSpeed(Mathf.Clamp(input.magnitude * animationSpeedFactor, animationSpeedMin, animationSpeedMax));
     }
 
     public void Stop() {
+        input = Vector2.zero;
         anim.SetState(CharacterAnimationState.Idle);
+    }
+
+    private void Awake() {
+        rb = GetComponentInChildren<Rigidbody>();
+        character = GetComponentInChildren<Character>();
+        anim = GetComponentInChildren<CharacterAnimations>();
+    }
+
+    private void FixedUpdate() {
+        transform.Translate(new Vector3(input.x, 0, input.y) * MovementSpeed * Time.fixedDeltaTime);
     }
 }

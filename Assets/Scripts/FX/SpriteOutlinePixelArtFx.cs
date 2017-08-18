@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [ExecuteInEditMode]
-public class SpriteOutline : MonoBehaviour {
+public class SpriteOutlinePixelArtFx : MonoBehaviour {
     public Color color = Color.white;
 
     private SpriteRenderer spriteRenderer;

@@ -27,10 +27,6 @@ public class ActionSequence : Singleton<ActionSequence> {
         CreatePortraits();
     }
 
-    private void Start() {
-        //CreatePortraits();
-    }
-
     private void CreatePortraits() {
         var characters = BattleManager.Instance.Characters;
         var lastPosition = transform.position + Vector3.left * avatarWidth * (characters.Count - 1);

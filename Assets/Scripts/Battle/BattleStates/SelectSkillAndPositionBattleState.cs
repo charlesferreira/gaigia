@@ -2,12 +2,14 @@
 
 public class SelectSkillAndPositionBattleState : IBattleState {
 
-    CharacterMovement characterMovement;
     SkillSet skillSet;
+    CharacterMovement characterMovement;
 
     public void OnStateEnter(IBattleStateMachine fsm) {
-        characterMovement = fsm.ActiveCharacter.GetComponent<CharacterMovement>();
+        fsm.ActivateCurrentCharacter();
         skillSet = fsm.ActiveCharacter.GetComponent<SkillSet>();
+        characterMovement = fsm.ActiveCharacter.GetComponent<CharacterMovement>();
+        BattleCamera.Instance.SetTarget(fsm.ActiveCharacter.transform);
     }
 
     public void OnStateExit(IBattleStateMachine fsm) {
@@ -15,27 +17,28 @@ public class SelectSkillAndPositionBattleState : IBattleState {
     }
 
     public void Update(IBattleStateMachine fsm) {
-        if (PlayerInput.RightShoulder) {
-            skillSet.SelectNextSkill();
-        }
+        fsm.UpdateTargets();
+        SetPosition();
+        SetCameraPan();
+        SelectSkill(fsm);
+    }
 
-        if (PlayerInput.LeftShoulder) {
-            skillSet.SelectPreviousSkill();
-        }
-
-        if (PlayerInput.Confirm) {
+    private void SelectSkill(IBattleStateMachine fsm) {
+        if (PlayerInput.RightShoulder) { skillSet.SelectNextSkill(); }
+        if (PlayerInput.LeftShoulder)  { skillSet.SelectPreviousSkill(); }
+        if (PlayerInput.Confirm && fsm.Targets.Count > 0) {
             fsm.SetState<SelectTargetBattleState>();
         }
+    }
 
-        BattleCamera.Instance.Pan(PlayerInput.RightStickHorizontal, PlayerInput.RightStickVertical);
+    private void SetPosition() {
         var input = new Vector2(PlayerInput.LeftStickHorizontal, PlayerInput.LeftStickVertical);
-        if (input != Vector2.zero)
-            characterMovement.Walk(input);
-        else
-            characterMovement.Stop();
+        characterMovement.Walk(input);
     }
 
-    public void FixedUpdate(IBattleStateMachine fsm) {
+    private void SetCameraPan() {
+        var panX = PlayerInput.RightStickHorizontal;
+        var panZ = PlayerInput.RightStickVertical;
+        BattleCamera.Instance.Pan(panX, panZ);
     }
-
 }

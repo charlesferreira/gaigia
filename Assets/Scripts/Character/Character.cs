@@ -19,12 +19,11 @@ public class Character : MonoBehaviour {
     public Sprite Avatar { get { return avatar; } }
     public StatsSheet Stats { get { return myStats; } }
     public CharacterMovement Movement { get { return movement; } }
+    public Skill Skill { get { return skillSet.CurrentSkill; } }
 
     private StatsSheet BaseStats { get { return baseStats ?? StatsSheet.Blank; } }
     private Weapon Weapon { get { return weapon ?? Weapon.Unarmed; } }
     private Armor Armor { get { return armor ?? Armor.Naked; } }
-
-    public Skill Skill { get { return skillSet.CurrentSkill; } }
 
     public void SetActive(bool active) {
         movement.SetActive(active);

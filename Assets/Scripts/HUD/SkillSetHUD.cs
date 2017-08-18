@@ -7,6 +7,7 @@ using UnityEditor;
 
 public class SkillSetHUD : Singleton<SkillSetHUD> {
 
+    [SerializeField] private Transform container;
     [SerializeField] private SkillIcon skillIconPrefab;
     [SerializeField] private Text skillName;
     [SerializeField] private float radius;
@@ -16,20 +17,25 @@ public class SkillSetHUD : Singleton<SkillSetHUD> {
     [SerializeField] private float rotationSpeed;
 
     private List<SkillIcon> skillIcons;
-    private float RotationAngleFrom { get { return transform.rotation.eulerAngles.z; } }
+    private float RotationAngleFrom { get { return container.rotation.eulerAngles.z; } }
     private float RotationAngleTo { get { return 360 * skillSet.CurrentSkillIndex / skillSet.Count; } }
     private SkillSet skillSet;
 
     protected SkillSetHUD() { }
 
-    public void SetUp(SkillSet skillSet) {
-        this.skillSet = skillSet;
+    public void SetUp(Character character) {
+        SetActive(character.Team == Team.Player);
+        skillSet = character.GetComponent<SkillSet>();
         ResetRotation();
         SetUpSkillIcons();
     }
 
+    private void SetActive(bool active) {
+        gameObject.SetActive(active);
+    }
+
     private void ResetRotation() {
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, RotationAngleTo));
+        container.rotation = Quaternion.Euler(new Vector3(0, 0, RotationAngleTo));
     }
 
     private void SetUpSkillIcons() {
@@ -45,7 +51,7 @@ public class SkillSetHUD : Singleton<SkillSetHUD> {
     private void SpawnSkillIcon(int index) {
         if (index < skillIcons.Count) return;
 
-        skillIcons.Add(Instantiate(skillIconPrefab, transform));
+        skillIcons.Add(Instantiate(skillIconPrefab, container));
     }
 
     private void HideUnusedIcons() {
@@ -63,14 +69,14 @@ public class SkillSetHUD : Singleton<SkillSetHUD> {
 
         var deltaAngle = Mathf.DeltaAngle(RotationAngleFrom, RotationAngleTo);
         var rotationAngle = RotationAngleFrom + deltaAngle * (1f - rotationDamping) * rotationSpeed * Time.deltaTime;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, rotationAngle));
+        container.rotation = Quaternion.Euler(new Vector3(0, 0, rotationAngle));
         skillName.text = skillSet.CurrentSkill.Name;
     }
 
 #if UNITY_EDITOR
     private void OnDrawGizmos() {
         Handles.color = Color.yellow;
-        Handles.DrawWireDisc(transform.position, Vector3.back, radius);
+        Handles.DrawWireDisc(container.position, Vector3.back, radius);
     }
 #endif
 

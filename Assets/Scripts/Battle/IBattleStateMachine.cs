@@ -4,9 +4,13 @@ public interface IBattleStateMachine {
 
     Character ActiveCharacter { get; }
 
-    IList<Character> Characters { get; }
+    IList<Character> Targets { get; }
+
+    void SetState<T>() where T : IBattleState;
+
+    void ActivateCurrentCharacter();
 
     void SelectNextCharacter();
 
-    void SetState<T>() where T : IBattleState;
+    void UpdateTargets();
 }

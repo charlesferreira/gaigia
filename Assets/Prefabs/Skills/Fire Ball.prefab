@@ -19,9 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4085569494636038}
-  - component: {fileID: 114644723556772978}
+  - component: {fileID: 114837633215696098}
   m_Layer: 0
-  m_Name: Melee Attack
+  m_Name: Fire Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114644723556772978
+--- !u!114 &114837633215696098
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -48,8 +48,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1977990775564622}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20ff0813df50d0344957269627e463c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 4170e743ed1dc324d8324faf565d4ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetFlag: 4
-  cost: 1
+  _name: Fire Ball
+  icon: {fileID: 21300138, guid: ba8d40673cd44f943ab353968d692e1f, type: 3}
+  range: 12
+  cost: 3

@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Name: Long Sword
   m_EditorClassIdentifier: 
   bonusStats: {fileID: 11400000, guid: 8491c13e3b929d74fa36e9b788533da8, type: 2}
+  _name: Long Sword
+  icon: {fileID: 21300108, guid: ba8d40673cd44f943ab353968d692e1f, type: 3}
   attack: 5
+  range: 3

@@ -9,10 +9,17 @@ public class BattleManager : Singleton<BattleManager>, IBattleStateMachine {
     private IBattleState currentState;
     private IList<IBattleState> states;
     int activeCharacterIndex;
-    
+    int selectedTargetIndex;
+
     public Character ActiveCharacter { get { return characters[activeCharacterIndex]; } }
+    public Character SelectedTarget { get { return Targets[selectedTargetIndex]; } }
     public IList<Character> Characters { get { return characters.AsReadOnly(); } }
     public IList<Character> Targets { get; set; }
+
+    public void Reset() {
+        activeCharacterIndex = -1;
+        SetState<PrepareNextTurnBattleState>();
+    }
 
     public void SetState<T>() where T : IBattleState {
         if (currentState != null)
@@ -41,6 +48,26 @@ public class BattleManager : Singleton<BattleManager>, IBattleStateMachine {
     public void ActivateCurrentCharacter() {
         for (var i = 0; i < characters.Count; i++)
             characters[i].SetActive(i == activeCharacterIndex);
+    }
+
+    public void ResetTarget() {
+        selectedTargetIndex = 0;
+    }
+
+    public void UpdateTargets() {
+        Targets = Characters
+            .Where(x => ActiveCharacter.Skill.Hits(ActiveCharacter, x))
+            .OrderBy(x => x.SqrDistance(ActiveCharacter)).ToList();
+    }
+
+    public void SelectNextTarget() {
+        selectedTargetIndex += 1;
+        selectedTargetIndex %= Targets.Count;
+    }
+
+    public void SelectPreviousTarget() {
+        selectedTargetIndex += Targets.Count - 1;
+        selectedTargetIndex %= Targets.Count;
     }
 
     private void Awake() {

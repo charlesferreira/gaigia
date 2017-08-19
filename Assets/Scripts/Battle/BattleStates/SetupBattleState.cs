@@ -1,7 +1,7 @@
 ﻿public class SetUpBattleState : IBattleState {
 
     public void OnStateEnter(IBattleStateMachine bsm) {
-        bsm.SetState<PrepareNextTurnBattleState>();
+        bsm.Reset();
     }
 
     public void OnStateExit(IBattleStateMachine bsm) { }

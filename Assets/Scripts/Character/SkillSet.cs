@@ -17,7 +17,7 @@ public class SkillSet : MonoBehaviour {
         }
     }
 
-    public Skill CurrentSkill { get { return skills[_currentSkillIndex]; } }
+    public Skill CurrentSkill { get { return skills[CurrentSkillIndex]; } }
 
     public int Count { get { return skills.Count; } }
 

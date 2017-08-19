@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(SkillSet))]
 [RequireComponent(typeof(CharacterMovement))]
@@ -12,25 +11,23 @@ public class Character : MonoBehaviour {
     [SerializeField] private Armor armor;
 
     private StatsSheet myStats;
-
-    SkillSet skillSet;
-    CharacterMovement movement;
+    private SkillSet skillSet;
+    private CharacterMovement movement;
 
     public Team Team { get { return team; } }
     public Sprite Avatar { get { return avatar; } }
+    public Weapon Weapon { get { return weapon ?? Weapon.Unarmed; } }
+    public Armor Armor { get { return armor ?? Armor.Naked; } }
+
     public StatsSheet Stats { get { return myStats; } }
     public CharacterMovement Movement { get { return movement; } }
     public Skill Skill { get { return skillSet.CurrentSkill; } }
 
     private StatsSheet BaseStats { get { return baseStats ?? StatsSheet.Blank; } }
-    private Weapon Weapon { get { return weapon ?? Weapon.Unarmed; } }
-    private Armor Armor { get { return armor ?? Armor.Naked; } }
 
     public void SetActive(bool active) {
         movement.SetActive(active);
         skillSet.SetActive(active);
-        if (active)
-            Skill.Source = this;
     }
 
     public void Equip(Weapon weapon) {
@@ -55,12 +52,10 @@ public class Character : MonoBehaviour {
 
     public void SelectNextSkill() {
         skillSet.SelectNextSkill();
-        Skill.Source = this;
     }
 
     public void SelectPreviousSkill() {
         skillSet.SelectPreviousSkill();
-        Skill.Source = this;
     }
 
     private void Awake() {

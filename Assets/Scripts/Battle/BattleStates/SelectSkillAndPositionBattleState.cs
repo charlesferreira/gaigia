@@ -1,36 +1,26 @@
-﻿using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SelectSkillAndPositionBattleState : IBattleState {
-    
-    CharacterMovement characterMovement;
 
     public void OnStateEnter(IBattleStateMachine bsm) {
         bsm.ActivateCurrentCharacter();
-        characterMovement = bsm.ActiveCharacter.GetComponent<CharacterMovement>();
         BattleCamera.Instance.SetTarget(bsm.ActiveCharacter.transform);
     }
 
     public void OnStateExit(IBattleStateMachine bsm) {
-        characterMovement.Stop();
+        bsm.ActiveCharacter.Movement.Stop();
     }
 
     public void Update(IBattleStateMachine bsm) {
-        UpdateTargets(bsm);
-        SetPosition();
+        bsm.UpdateTargets();
+        SetPosition(bsm);
         SetCameraPan();
         SelectSkill(bsm);
     }
 
-    private void UpdateTargets(IBattleStateMachine bsm) {
-        bsm.Targets = bsm.Characters
-            .Where(x => bsm.ActiveCharacter.Skill.Hits(x))
-            .OrderBy(x => x.SqrDistance(bsm.ActiveCharacter)).ToList();
-    }
-
-    private void SetPosition() {
+    private void SetPosition(IBattleStateMachine bsm) {
         var input = new Vector2(PlayerInput.LeftStickHorizontal, PlayerInput.LeftStickVertical);
-        characterMovement.Walk(input);
+        bsm.ActiveCharacter.Movement.Walk(input);
     }
 
     private void SetCameraPan() {

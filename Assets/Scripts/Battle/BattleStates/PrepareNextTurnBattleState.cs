@@ -1,6 +1,7 @@
 ﻿public class PrepareNextTurnBattleState : IBattleState {
 
     public void OnStateEnter(IBattleStateMachine bsm) {
+        bsm.SelectNextCharacter();
         MovementArea.Instance.SetUp(bsm.ActiveCharacter);
         SkillRange.Instance.SetUp(bsm.ActiveCharacter);
         SkillSetHUD.Instance.SetUp(bsm.ActiveCharacter);

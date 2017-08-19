@@ -1,7 +1,7 @@
 ﻿public class CastSkillBattleState : IBattleState {
 
     public void OnStateEnter(IBattleStateMachine bsm) {
-        bsm.ActiveCharacter.Skill.Cast(() => {
+        bsm.ActiveCharacter.Skill.Cast(bsm.ActiveCharacter, bsm.SelectedTarget, () => {
             bsm.SetState<PrepareNextTurnBattleState>();
         });
     }

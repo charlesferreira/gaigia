@@ -1,49 +1,47 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Skill")]
-public class Skill : ScriptableObject {
+abstract public class Skill : MonoBehaviour {
 
     [EnumFlags]
     [SerializeField] private TargetFlag targetFlag;
-    [SerializeField] private SkillController skillPrefab;
-    [SerializeField] private Sprite icon;
-    [SerializeField] private string _name;
-    [Range(0f, 20)]
-    [SerializeField] private float range;
 
-    public Sprite Icon { get { return icon; } }
-    public string Name { get { return _name; } }
-    public float Range { get { return range; } }
-    public Character Source { get; set; }
-    public Character Target { get; set; }
+    abstract public string Name { get; }
+    abstract public Sprite Icon { get; }
+    abstract public float Range { get; }
+    abstract public int Cost { get; }
 
-    public void Reset() {
-        Source = Target = null;
+    abstract public IEnumerator OnCast(Character source, Character target);
+
+    public void Cast(Character source, Character target, Action OnFinish) {
+        var skill = Instantiate(gameObject).GetComponent<Skill>();
+        skill.StartCoroutine(SkillSteps(skill.gameObject, source, target, OnFinish));
     }
 
-    public void Cast(Action OnFinish) {
-        var skill = Instantiate(skillPrefab);
-        skill.Play(Source, Target, OnFinish);
-    }
-
-    public bool Hits(Character target) {
-        if (TargetsSelf(target, Source))
+    public bool Hits(Character source, Character target) {
+        if (TargetsSelf(source, target))
             return true;
         
-        return TargetIsInRange(target) && TeamsMatchTargetFlag(target, Source);
+        return TargetIsInRange(source, target) && TeamsMatchTargetFlag(source, target);
     }
 
-    private bool TargetsSelf(Character target, Character source) {
+    private bool TargetsSelf(Character source, Character target) {
         return target == source && targetFlag.Match(TargetFlag.Self);
     }
 
-    private bool TargetIsInRange(Character target) {
-        return target.SqrDistance(Source) < range * range;
+    private bool TargetIsInRange(Character source, Character target) {
+        return target.SqrDistance(source) < Range * Range;
     }
 
-    private bool TeamsMatchTargetFlag(Character target, Character source) {
-        return target.Team == source.Team && targetFlag.Match(TargetFlag.Ally)
-            || target.Team != source.Team && targetFlag.Match(TargetFlag.Enemy);
+    private bool TeamsMatchTargetFlag(Character source, Character target) {
+        return source.Team == target.Team && targetFlag.Match(TargetFlag.Ally)
+            || source.Team != target.Team && targetFlag.Match(TargetFlag.Enemy);
+    }
+
+    private IEnumerator SkillSteps(GameObject skill, Character source, Character target, Action OnFinish) {
+        yield return OnCast(source, target);
+        Destroy(skill);
+        OnFinish();
     }
 }

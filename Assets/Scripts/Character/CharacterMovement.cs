@@ -10,7 +10,6 @@ public class CharacterMovement : MonoBehaviour {
 
     Rigidbody rb;
     Character character;
-    CharacterAnimations anim;
     Vector2 input;
 
     private float MovementSpeed {
@@ -32,20 +31,19 @@ public class CharacterMovement : MonoBehaviour {
         }
 
         this.input = input;
-        anim.Face(input);
-        anim.SetState(CharacterAnimationState.Walking);
-        anim.SetSpeed(Mathf.Clamp(input.magnitude * animationSpeedFactor, animationSpeedMin, animationSpeedMax));
+        character.Animation.Face(input);
+        character.Animation.SetState(CharacterAnimationState.Walking);
+        character.Animation.SetSpeed(Mathf.Clamp(input.magnitude * animationSpeedFactor, animationSpeedMin, animationSpeedMax));
     }
 
     public void Stop() {
         input = Vector2.zero;
-        anim.SetState(CharacterAnimationState.Idle);
+        character.Animation.SetState(CharacterAnimationState.Idle);
     }
 
     private void Awake() {
         rb = GetComponentInChildren<Rigidbody>();
         character = GetComponentInChildren<Character>();
-        anim = GetComponentInChildren<CharacterAnimations>();
     }
 
     private void FixedUpdate() {

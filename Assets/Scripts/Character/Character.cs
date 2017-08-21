@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(SkillSet))]
+[RequireComponent(typeof(CharacterHealth))]
 [RequireComponent(typeof(CharacterMovement))]
 public class Character : MonoBehaviour {
 
@@ -12,7 +13,9 @@ public class Character : MonoBehaviour {
 
     private StatsSheet myStats;
     private SkillSet skillSet;
+    private CharacterHealth health;
     private CharacterMovement movement;
+    new private CharacterAnimations animation;
 
     public Team Team { get { return team; } }
     public Sprite Avatar { get { return avatar; } }
@@ -20,7 +23,9 @@ public class Character : MonoBehaviour {
     public Armor Armor { get { return armor ?? Armor.Naked; } }
 
     public StatsSheet Stats { get { return myStats; } }
+    public CharacterHealth Health { get { return health; } }
     public CharacterMovement Movement { get { return movement; } }
+    public CharacterAnimations Animation { get { return animation; } }
     public Skill Skill { get { return skillSet.CurrentSkill; } }
 
     private StatsSheet BaseStats { get { return baseStats ?? StatsSheet.Blank; } }
@@ -60,7 +65,9 @@ public class Character : MonoBehaviour {
 
     private void Awake() {
         skillSet = GetComponent<SkillSet>();
+        health = GetComponent<CharacterHealth>();
         movement = GetComponent<CharacterMovement>();
+        animation = GetComponentInChildren<CharacterAnimations>();
         CalculateStats();
     }
 

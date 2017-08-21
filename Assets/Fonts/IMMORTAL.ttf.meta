@@ -1,20 +1,20 @@
 fileFormatVersion: 2
-guid: 45b01db48c6ed484187e1c757f3f145b
-timeCreated: 1502745914
+guid: beea80d0436bc4747bb22c843825f381
+timeCreated: 1503322338
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
-  fontSize: 100
+  fontSize: 200
   forceTextureCase: -1
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: R.P.G.
+  fontName: Immortal
   fontNames:
-  - R.P.G.
+  - Immortal
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 1
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

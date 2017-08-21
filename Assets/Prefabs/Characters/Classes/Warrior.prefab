@@ -22,27 +22,8 @@ GameObject:
   - component: {fileID: 212049084662856138}
   - component: {fileID: 95351147871436294}
   - component: {fileID: 114391669605539698}
-  - component: {fileID: 114129512687854578}
   m_Layer: 0
   m_Name: Sprite
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1268778645578268
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4182211983921670}
-  - component: {fileID: 33438305390831406}
-  - component: {fileID: 136029454411932980}
-  - component: {fileID: 23129577022398724}
-  m_Layer: 0
-  m_Name: Hit Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,10 +37,13 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4176448170183106}
+  - component: {fileID: 65923235026886198}
   - component: {fileID: 54472203680954994}
+  - component: {fileID: 114999436398256438}
   - component: {fileID: 114168719808902148}
-  - component: {fileID: 114993293818201376}
+  - component: {fileID: 114343528056385846}
   - component: {fileID: 114261376699542310}
+  - component: {fileID: 114993293818201376}
   m_Layer: 0
   m_Name: Warrior
   m_TagString: Untagged
@@ -77,22 +61,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4182211983921670}
   - {fileID: 4589715855416012}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4182211983921670
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1268778645578268}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4176448170183106}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4589715855416012
@@ -106,47 +76,8 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 4176448170183106}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 35, y: 0, z: 0}
---- !u!23 &23129577022398724
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1268778645578268}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &33438305390831406
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1268778645578268}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &54472203680954994
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -162,6 +93,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!65 &65923235026886198
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1865965430294768}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!95 &95351147871436294
 Animator:
   serializedVersion: 3
@@ -179,17 +122,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114129512687854578
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1027114488182562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab94d96b9ac604c4d8880a5b7c11fe78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114168719808902148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -217,6 +149,19 @@ MonoBehaviour:
   baseStats: {fileID: 11400000, guid: e3a4cccdc5c99734cafbd71236179ab0, type: 2}
   weapon: {fileID: 11400000, guid: 3223fdd28da654a439eb979ae154df9c, type: 2}
   armor: {fileID: 0}
+--- !u!114 &114343528056385846
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1865965430294768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c214dbaf35d4d45b19bccfbb117a96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitTextPrefab: {fileID: 114578694712040544, guid: 74d069781fbcead4abd99059feddbbab,
+    type: 2}
 --- !u!114 &114391669605539698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -243,19 +188,17 @@ MonoBehaviour:
   - {fileID: 114837633215696098, guid: bb5b76ffba0eb0e4588b47a9137ed0f2, type: 2}
   - {fileID: 114841202943652312, guid: 8f3047e2cbd3be34a9c0cd41fc2c75c0, type: 2}
   - {fileID: 114644723556772978, guid: 7f9543d6f3383374991432f34cd3592a, type: 2}
---- !u!136 &136029454411932980
-CapsuleCollider:
+--- !u!114 &114999436398256438
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1268778645578268}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_GameObject: {fileID: 1865965430294768}
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab94d96b9ac604c4d8880a5b7c11fe78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212049084662856138
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -286,7 +229,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -900995045
-  m_SortingLayer: 3
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300008, guid: 9dbff224b5903f14a81dd66d0887906a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

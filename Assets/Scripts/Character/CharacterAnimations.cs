@@ -32,7 +32,7 @@ public partial class CharacterAnimations : MonoBehaviour {
     }
 
     private void Awake() {
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
         layerIndices = new Dictionary<Direction, int>();
         foreach (Direction direction in Enum.GetValues(typeof(Direction))) {
             layerIndices[direction] = anim.GetLayerIndex(direction.ToString());

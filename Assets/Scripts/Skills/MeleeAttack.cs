@@ -12,7 +12,24 @@ public class MeleeAttack : Skill {
     public override int Cost { get { return cost; } }
 
     public override IEnumerator OnCast(Character source, Character target) {
-        yield return new WaitForSeconds(2);
-        print("Finished running OnCast");
+        var camera = BattleCamera.Instance;
+
+        camera.SetTarget(source.transform);
+        source.Animation.SetState(CharacterAnimationState.Casting);
+        yield return new WaitForSeconds(1);
+
+        camera.SetTarget(target.transform);
+        source.Animation.SetState(CharacterAnimationState.Idle);
+        target.Animation.SetState(CharacterAnimationState.Casting);
+        yield return new WaitForSeconds(0.8f);
+        target.Health.TakeDamage(CalculateDamage(source));
+        yield return new WaitForSeconds(0.2f);
+
+        target.Animation.SetState(CharacterAnimationState.Idle);
+        yield return new WaitForSeconds(0.2f);
+    }
+
+    private int CalculateDamage(Character character) {
+        return 17;
     }
 }

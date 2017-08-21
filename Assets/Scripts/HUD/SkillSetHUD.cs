@@ -24,7 +24,7 @@ public class SkillSetHUD : Singleton<SkillSetHUD> {
     protected SkillSetHUD() { }
 
     public void SetUp(Character character) {
-        SetActive(character.Team == Team.Player);
+        //SetActive(character.Team == Team.Player);
         skillSet = character.GetComponent<SkillSet>();
         ResetRotation();
         SetUpSkillIcons();

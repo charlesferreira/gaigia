@@ -21,6 +21,7 @@ public class MeleeAttack : Skill {
         camera.SetTarget(target.transform);
         source.Animation.SetState(CharacterAnimationState.Idle);
         target.Animation.SetState(CharacterAnimationState.Casting);
+
         yield return new WaitForSeconds(0.8f);
         target.Health.TakeDamage(CalculateDamage(source));
         yield return new WaitForSeconds(0.2f);

@@ -185,9 +185,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skills:
+  - {fileID: 114644723556772978, guid: 7f9543d6f3383374991432f34cd3592a, type: 2}
   - {fileID: 114837633215696098, guid: bb5b76ffba0eb0e4588b47a9137ed0f2, type: 2}
   - {fileID: 114841202943652312, guid: 8f3047e2cbd3be34a9c0cd41fc2c75c0, type: 2}
-  - {fileID: 114644723556772978, guid: 7f9543d6f3383374991432f34cd3592a, type: 2}
 --- !u!114 &114999436398256438
 MonoBehaviour:
   m_ObjectHideFlags: 1

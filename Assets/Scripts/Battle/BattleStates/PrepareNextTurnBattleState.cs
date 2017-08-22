@@ -6,7 +6,7 @@
         SkillRange.Instance.SetUp(bsm.ActiveCharacter);
         SkillSetHUD.Instance.SetUp(bsm.ActiveCharacter);
         ActionSequence.Instance.SetUp(bsm.ActiveCharacter);
-        bsm.SetState<SelectSkillAndPositionBattleState>();
+        bsm.SetState<SetSkillAndPositionBattleState>();
     }
 
     public void OnStateExit(IBattleStateMachine bsm) { }

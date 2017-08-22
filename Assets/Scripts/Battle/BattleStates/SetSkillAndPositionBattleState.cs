@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SelectSkillAndPositionBattleState : IBattleState {
+public class SetSkillAndPositionBattleState : IBattleState {
 
     public void OnStateEnter(IBattleStateMachine bsm) {
         bsm.ActivateCurrentCharacter();
@@ -36,7 +36,7 @@ public class SelectSkillAndPositionBattleState : IBattleState {
         if (PlayerInput.LeftShoulder) {
             bsm.ActiveCharacter.SelectPreviousSkill();
         }
-        if (PlayerInput.Confirm && bsm.Targets.Count > 0) {
+        if (PlayerInput.Confirm && SkillRange.Instance.SkillIsReady) {
             bsm.SetState<SelectTargetBattleState>();
         }
     }

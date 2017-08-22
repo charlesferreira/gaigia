@@ -41,6 +41,8 @@ abstract public class Skill : MonoBehaviour {
 
     private IEnumerator SkillSteps(GameObject skill, Character source, Character target, Action OnFinish) {
         yield return OnCast(source, target);
+
+        yield return new WaitForSeconds(1f);
         Destroy(skill);
         OnFinish();
     }

@@ -12,7 +12,7 @@
 
     public void Update(IBattleStateMachine bsm) {
         if (PlayerInput.Cancel) {
-            bsm.SetState<SelectSkillAndPositionBattleState>();
+            bsm.SetState<SetSkillAndPositionBattleState>();
             return;
         }
 

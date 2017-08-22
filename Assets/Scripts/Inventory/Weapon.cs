@@ -8,7 +8,7 @@ public class Weapon : Equipment {
     [SerializeField] private Sprite icon;
     [SerializeField] private int attack;
     [Range(0, 5)]
-    [SerializeField] private float range;
+    [SerializeField] private float range = 1;
 
     private static Weapon nullInstance;
 

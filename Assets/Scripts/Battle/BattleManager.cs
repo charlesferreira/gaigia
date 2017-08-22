@@ -38,7 +38,7 @@ public class BattleManager : Singleton<BattleManager>, IBattleStateMachine {
         states = new List<IBattleState> {
             new SetUpBattleState(),
             new PrepareNextTurnBattleState(),
-            new SelectSkillAndPositionBattleState(),
+            new SetSkillAndPositionBattleState(),
             new SelectTargetBattleState(),
             new CastSkillBattleState(),
         };

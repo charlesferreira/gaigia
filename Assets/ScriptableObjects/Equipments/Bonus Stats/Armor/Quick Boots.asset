@@ -9,14 +9,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e3d86864451c1146955ebc642db33e4, type: 3}
-  m_Name: Long Sword Stats
+  m_Name: Quick Boots
   m_EditorClassIdentifier: 
-  vitality: 5
+  vitality: 0
   mana: 0
   strength: 0
   spirit: 0
   dexterity: 0
   charisma: 0
   luck: 0
-  baseMovement: 0
+  baseMovement: 3
   baseEnergy: 0

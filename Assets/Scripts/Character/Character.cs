@@ -1,77 +1,85 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(ActionPoints))]
 [RequireComponent(typeof(SkillSet))]
 [RequireComponent(typeof(CharacterHealth))]
 [RequireComponent(typeof(CharacterMovement))]
+[RequireComponent(typeof(CharacterAnimations))]
 public class Character : MonoBehaviour {
 
-    [SerializeField] private Team team;
-    [SerializeField] private Sprite avatar;
-    [SerializeField] private StatsSheet baseStats;
-    [SerializeField] private Weapon weapon;
-    [SerializeField] private Armor armor;
+    [SerializeField] private Team _team;
+    [SerializeField] private Sprite _avatar;
+    [SerializeField] private StatsSheet _baseStats;
+    [SerializeField] private Weapon _weapon;
+    [SerializeField] private Armor _armor;
 
-    private StatsSheet myStats;
-    private SkillSet skillSet;
-    private CharacterHealth health;
-    private CharacterMovement movement;
-    new private CharacterAnimations animation;
+    public ActionPoints AP { get; private set; }
+    public SkillSet SkillSet { get; private set; }
+    public CharacterHealth Health { get; private set; }
+    public CharacterMovement Movement { get; private set; }
+    public CharacterAnimations Animation { get; private set; }
 
-    public Team Team { get { return team; } }
-    public Sprite Avatar { get { return avatar; } }
-    public Weapon Weapon { get { return weapon ?? Weapon.Unarmed; } }
-    public Armor Armor { get { return armor ?? Armor.Naked; } }
+    public StatsSheet Stats { get; private set; }
+    public Skill Skill { get { return SkillSet.CurrentSkill; } }
 
-    public StatsSheet Stats { get { return myStats; } }
-    public CharacterHealth Health { get { return health; } }
-    public CharacterMovement Movement { get { return movement; } }
-    public CharacterAnimations Animation { get { return animation; } }
-    public Skill Skill { get { return skillSet.CurrentSkill; } }
+    public Team Team { get { return _team; } }
+    public Sprite Avatar { get { return _avatar; } }
 
-    private StatsSheet BaseStats { get { return baseStats ?? StatsSheet.Blank; } }
+    public Weapon Weapon {
+        get { return _weapon ?? Weapon.Unarmed; }
+        private set { _weapon = value; }
+    }
+
+    public Armor Armor {
+        get { return _armor ?? Armor.Naked; }
+        private set { _armor = value; }
+    }
+
+    private StatsSheet BaseStats { get { return _baseStats ?? StatsSheet.Blank; } }
 
     public void SetActive(bool active) {
-        movement.SetActive(active);
-        skillSet.SetActive(active);
+        Movement.SetActive(active);
+        SkillSet.SetActive(active);
     }
 
     public void Equip(Weapon weapon) {
-        this.weapon = weapon;
+        Weapon = weapon;
         CalculateStats();
     }
 
     public void RemoveWeapon() {
-        weapon = Weapon.Unarmed;
+        Weapon = Weapon.Unarmed;
         CalculateStats();
     }
 
     public void Equip(Armor armor) {
-        this.armor = armor;
+        Armor = armor;
         CalculateStats();
     }
 
     public void RemoveArmor() {
-        armor = Armor.Naked;
+        Armor = Armor.Naked;
         CalculateStats();
     }
 
     public void SelectNextSkill() {
-        skillSet.SelectNextSkill();
+        SkillSet.SelectNextSkill();
     }
 
     public void SelectPreviousSkill() {
-        skillSet.SelectPreviousSkill();
+        SkillSet.SelectPreviousSkill();
     }
 
     private void Awake() {
-        skillSet = GetComponent<SkillSet>();
-        health = GetComponent<CharacterHealth>();
-        movement = GetComponent<CharacterMovement>();
-        animation = GetComponentInChildren<CharacterAnimations>();
+        AP = GetComponent<ActionPoints>();
+        SkillSet = GetComponent<SkillSet>();
+        Health = GetComponent<CharacterHealth>();
+        Movement = GetComponent<CharacterMovement>();
+        Animation = GetComponentInChildren<CharacterAnimations>();
         CalculateStats();
     }
 
     private void CalculateStats() {
-        myStats = BaseStats + Weapon.BonusStats + Armor.BonusStats;
+        Stats = BaseStats + Weapon.BonusStats + Armor.BonusStats;
     }
 }

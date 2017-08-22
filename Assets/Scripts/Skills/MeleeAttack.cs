@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MeleeAttack : Skill {
     
-    [Range(0, 9)]
+    [Range(1, 9)]
     [SerializeField] private int cost;
 
     public override string Name { get { return BattleManager.Instance.ActiveCharacter.Weapon.Name; } }
@@ -22,12 +22,9 @@ public class MeleeAttack : Skill {
         source.Animation.SetState(CharacterAnimationState.Idle);
         target.Animation.SetState(CharacterAnimationState.Casting);
 
-        yield return new WaitForSeconds(0.8f);
-        target.Health.TakeDamage(CalculateDamage(source));
-        yield return new WaitForSeconds(0.2f);
-
+        yield return new WaitForSeconds(1.0f);
         target.Animation.SetState(CharacterAnimationState.Idle);
-        yield return new WaitForSeconds(0.2f);
+        target.Health.TakeDamage(CalculateDamage(source));
     }
 
     private int CalculateDamage(Character character) {

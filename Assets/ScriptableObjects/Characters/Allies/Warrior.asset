@@ -18,5 +18,5 @@ MonoBehaviour:
   dexterity: 5
   charisma: 5
   luck: 5
-  baseMovement: 8
+  baseMovement: 10
   baseEnergy: 5

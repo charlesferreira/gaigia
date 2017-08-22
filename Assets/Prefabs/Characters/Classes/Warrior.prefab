@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 114343528056385846}
   - component: {fileID: 114261376699542310}
   - component: {fileID: 114993293818201376}
+  - component: {fileID: 114325814311904530}
   m_Layer: 0
   m_Name: Warrior
   m_TagString: Untagged
@@ -144,11 +145,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fcd841474a1d0b49b14487513b472ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 0
-  avatar: {fileID: 21300000, guid: eee31482f127e4e40b996469dd0d17fd, type: 3}
-  baseStats: {fileID: 11400000, guid: e3a4cccdc5c99734cafbd71236179ab0, type: 2}
-  weapon: {fileID: 11400000, guid: 3223fdd28da654a439eb979ae154df9c, type: 2}
-  armor: {fileID: 0}
+  _team: 0
+  _avatar: {fileID: 21300000, guid: eee31482f127e4e40b996469dd0d17fd, type: 3}
+  _baseStats: {fileID: 11400000, guid: e3a4cccdc5c99734cafbd71236179ab0, type: 2}
+  _weapon: {fileID: 11400000, guid: 3223fdd28da654a439eb979ae154df9c, type: 2}
+  _armor: {fileID: 0}
+--- !u!114 &114325814311904530
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1865965430294768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d64b50e77d15784b98f10d7dfc9d491, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basePoints: 5
 --- !u!114 &114343528056385846
 MonoBehaviour:
   m_ObjectHideFlags: 1

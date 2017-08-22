@@ -3,6 +3,9 @@
 [RequireComponent(typeof(Rigidbody))]
 public class CharacterMovement : MonoBehaviour {
 
+    public const float MaxMovementSpeed = 30;
+    public const int MovementPerUnit = 3;
+
     private static float animationSpeedMin = 1.0f;
     private static float animationSpeedMax = 1.8f;
     private static float animationSpeedFactor = 2f;
@@ -10,18 +13,23 @@ public class CharacterMovement : MonoBehaviour {
 
     Rigidbody rb;
     Character character;
-    Vector2 input;
-
-    private float MovementSpeed {
-        get {
-            return Mathf.Min(StatsSheet.MaxMovementSpeed, character.Stats.Movement) * movementSpeedFactor;
-        }
-    }
+    
+    public int Cost { get { return Mathf.FloorToInt(transform.position.Distance(Center) * MaxMovementPoints / MaxDistance); } }
+    
+    private Vector2 Input { get; set; }
+    private Vector3 Center { get; set; }
+    private float MaxDistance { get { return (float) character.Stats.Movement / MovementPerUnit; } }
+    private float MovementSpeed { get { return movementSpeedFactor * Mathf.Min(MaxMovementSpeed, character.Stats.Movement); } }
+    private int MaxMovementPoints { get { return MovementArea.Instance.MaxMovementPoints; } }
 
     public void SetActive(bool active) {
         Stop();
         enabled = active;
         rb.isKinematic = !active;
+    }
+
+    public void SetCenter() {
+        Center = transform.position;
     }
 
     public void Walk(Vector2 input) {
@@ -30,14 +38,14 @@ public class CharacterMovement : MonoBehaviour {
             return;
         }
 
-        this.input = input;
+        Input = input;
         character.Animation.Face(input);
         character.Animation.SetState(CharacterAnimationState.Walking);
         character.Animation.SetSpeed(Mathf.Clamp(input.magnitude * animationSpeedFactor, animationSpeedMin, animationSpeedMax));
     }
 
     public void Stop() {
-        input = Vector2.zero;
+        Input = Vector2.zero;
         character.Animation.SetState(CharacterAnimationState.Idle);
     }
 
@@ -47,6 +55,11 @@ public class CharacterMovement : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        transform.Translate(new Vector3(input.x, 0, input.y) * MovementSpeed * Time.fixedDeltaTime);
+        transform.Translate(new Vector3(Input.x, 0, Input.y) * MovementSpeed * Time.fixedDeltaTime);
+    }
+
+    private void Update() {
+        if (PlayerInput.Confirm)
+            print(Cost);
     }
 }

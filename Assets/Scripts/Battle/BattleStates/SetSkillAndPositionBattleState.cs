@@ -4,7 +4,7 @@ public class SetSkillAndPositionBattleState : IBattleState {
 
     public void OnStateEnter(BattleManager bm) {
         bm.ActivateCurrentCharacter();
-        BattleCamera.Instance.SetTarget(bm.Character.transform);
+        CameraMan.Instance.SetTarget(bm.Character.transform);
     }
 
     public void OnStateExit(BattleManager bm) {
@@ -27,7 +27,7 @@ public class SetSkillAndPositionBattleState : IBattleState {
     private void SetCameraPan() {
         var panX = PlayerInput.RightStickHorizontal;
         var panZ = PlayerInput.RightStickVertical;
-        BattleCamera.Instance.Pan(panX, panZ);
+        CameraMan.Instance.Pan(panX, panZ);
     }
 
     private void SelectSkill(BattleManager bm) {

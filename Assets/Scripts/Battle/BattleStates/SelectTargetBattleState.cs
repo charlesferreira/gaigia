@@ -23,6 +23,6 @@
 
     private void UpdateTarget(BattleManager bm) {
         bm.SkillTarget.SetTarget(bm.Target);
-        BattleCamera.Instance.SetTarget(bm.Target.transform);
+        CameraMan.Instance.SetTarget(bm.Target.transform);
     }
 }

@@ -2128,7 +2128,7 @@ GameObject:
   - component: {fileID: 948604318}
   - component: {fileID: 948604317}
   m_Layer: 0
-  m_Name: Battle Camera
+  m_Name: Camera Man
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4736,8 +4736,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c0f2f9a1e6ba934a9f017c7be3fe1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeColor: {r: 0.4705882, g: 0.11372549, b: 0.11372549, a: 0.91764706}
-  idleColor: {r: 0.11418684, g: 0.18792506, b: 0.4705882, a: 0.916}
   avatarPrefab: {fileID: 114400575293255156, guid: 2556431263cff4e4f8d19c02ea7fd08c,
     type: 2}
   avatarWidth: 100

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [ExecuteInEditMode]
-public class BattleCamera : Singleton<BattleCamera> {
+public class CameraMan : Singleton<CameraMan> {
 
     [SerializeField] private Transform target;
     [Range(0, 10)]
@@ -11,9 +11,9 @@ public class BattleCamera : Singleton<BattleCamera> {
     [Range(1, 1000)]
     [SerializeField] private float speed;
 
-    Vector3 panOffset;
+    private Vector3 panOffset;
 
-    protected BattleCamera() {}
+    protected CameraMan() {}
 
     public void SetTarget(Transform target) {
         this.target = target;

@@ -81,7 +81,7 @@ public class Character : MonoBehaviour {
         SkillSet = GetComponent<SkillSet>();
         Health = GetComponent<CharacterHealth>();
         Movement = GetComponent<CharacterMovement>();
-        Animation = GetComponentInChildren<CharacterAnimations>();
+        Animation = GetComponent<CharacterAnimations>();
         CalculateStats();
     }
 

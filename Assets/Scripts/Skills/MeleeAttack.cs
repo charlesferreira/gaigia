@@ -7,7 +7,7 @@ public class MeleeAttack : Skill {
     [SerializeField] private int cost;
 
     public override IEnumerator OnCast(Character source, Character target) {
-        var camera = BattleCamera.Instance;
+        var camera = CameraMan.Instance;
 
         camera.SetTarget(source.transform);
         source.Animation.SetState(CharacterAnimationState.Casting);

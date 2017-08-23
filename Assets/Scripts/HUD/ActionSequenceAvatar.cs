@@ -6,6 +6,9 @@ public class ActionSequenceAvatar : MonoBehaviour {
     [SerializeField] private Image avatar;
     [SerializeField] private Image frame;
     [SerializeField] private Image turnLabel;
+    [SerializeField] private Color idleColor;
+    [SerializeField] private Color activeColor;
+
     private Character character;
 
     private Color Color {
@@ -22,12 +25,10 @@ public class ActionSequenceAvatar : MonoBehaviour {
     internal void SetActive(Character activeCharacter) {
         var active = activeCharacter == character;
         turnLabel.gameObject.SetActive(active);
-        Color = active
-            ? ActionSequence.Instance.ActiveColor
-            : ActionSequence.Instance.IdleColor;
+        Color = active ? activeColor : idleColor;
     }
 
     private void Awake() {
-        Color = ActionSequence.Instance.IdleColor;
+        Color = idleColor;
     }
 }

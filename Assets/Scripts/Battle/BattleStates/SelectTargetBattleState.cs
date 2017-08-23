@@ -1,28 +1,28 @@
 ﻿public class SelectTargetBattleState : IBattleState {
 
-    public void OnStateEnter(IBattleStateMachine bsm) {
-        bsm.ResetTarget();
-        UpdateTarget(bsm);
-        SkillTarget.Instance.SetActive(true);
+    public void OnStateEnter(BattleManager bm) {
+        bm.ResetTarget();
+        UpdateTarget(bm);
+        bm.SkillTarget.SetActive(true);
     }
 
-    public void OnStateExit(IBattleStateMachine bsm) {
-        SkillTarget.Instance.SetActive(false);
+    public void OnStateExit(BattleManager bm) {
+        bm.SkillTarget.SetActive(false);
     }
 
-    public void Update(IBattleStateMachine bsm) {
+    public void Update(BattleManager bm) {
         if (PlayerInput.Cancel) {
-            bsm.SetState<SetSkillAndPositionBattleState>();
+            bm.SetState<SetSkillAndPositionBattleState>();
             return;
         }
 
-        if (PlayerInput.RightShoulder) { bsm.SelectNextTarget(); }
-        if (PlayerInput.LeftShoulder)  { bsm.SelectPreviousTarget(); }
-        if (PlayerInput.Confirm)       { bsm.SetState<CastSkillBattleState>(); }
+        if (PlayerInput.RightShoulder) { bm.SelectNextTarget(); }
+        if (PlayerInput.LeftShoulder)  { bm.SelectPreviousTarget(); }
+        if (PlayerInput.Confirm)       { bm.SetState<CastSkillBattleState>(); }
     }
 
-    private void UpdateTarget(IBattleStateMachine bsm) {
-        SkillTarget.Instance.SetTarget(bsm.SelectedTarget);
-        BattleCamera.Instance.SetTarget(bsm.SelectedTarget.transform);
+    private void UpdateTarget(BattleManager bm) {
+        bm.SkillTarget.SetTarget(bm.Target);
+        BattleCamera.Instance.SetTarget(bm.Target.transform);
     }
 }

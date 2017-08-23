@@ -11,10 +11,7 @@ public class SkillSet : MonoBehaviour {
 
     public int CurrentSkillIndex {
         get { return _currentSkillIndex; }
-        set {
-            _currentSkillIndex = (value + Count) % Count;
-            SkillRange.Instance.SetSkill(CurrentSkill);
-        }
+        set { _currentSkillIndex = (value + Count) % Count; }
     }
 
     public Skill CurrentSkill { get { return skills[CurrentSkillIndex]; } }

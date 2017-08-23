@@ -1,27 +1,25 @@
 ﻿using UnityEngine;
 
-public class SkillRange : Singleton<SkillRange> {
+public class SkillRange : MonoBehaviour {
 
     [SerializeField] private SpriteRenderer circle;
-
-    private Skill Skill { get; set; }
-
-    public bool SkillIsReady {
-        get {
-            return BattleManager.Instance.ActiveCharacter.AP.Left >= Skill.Cost
-                && BattleManager.Instance.Targets.Count > 0;
-        }
-    }
 
     public void SetUp(Character character) {
         SetActive(character.Team == Team.Player);
         SetParent(character.transform);
-        SetSkill(character.Skill);
+        SetRange(character.Skill.GetRange(character));
     }
 
-    public void SetSkill(Skill skill) {
-        Skill = skill;
-        transform.localScale = Vector3.one * skill.Range * 2;
+    public void SetRange(float range) {
+        transform.localScale = Vector3.one * range * 2;
+    }
+
+    public void UpdateColor(bool hasEnoughAP, bool hasValidTarget) {
+        circle.color = hasEnoughAP && hasValidTarget
+            ? Color.white
+            : hasEnoughAP
+                ? Color.yellow
+                : Color.red;
     }
 
     private void SetActive(bool active) {
@@ -38,14 +36,5 @@ public class SkillRange : Singleton<SkillRange> {
     private void SetPosition(Vector3 position) {
         position.y = transform.position.y;
         transform.position = position;
-    }
-
-    private void Update() {
-        circle.color = BattleManager.Instance.ActiveCharacter.AP.Left < Skill.Cost
-            ? Color.red
-            : BattleManager.Instance.Targets.Count > 0
-                ? Color.white
-                : Color.yellow;
-
     }
 }

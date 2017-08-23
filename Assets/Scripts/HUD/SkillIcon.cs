@@ -5,8 +5,8 @@ public class SkillIcon : MonoBehaviour {
 
     [SerializeField] private Image icon;
 
-    public void SetSkill(Skill skill) {
-        icon.overrideSprite = skill.Icon;
+    public void SetSprite(Sprite sprite) {
+        icon.overrideSprite = sprite;
     }
 
     public void SetPosition(float radius, float angleRatio) {

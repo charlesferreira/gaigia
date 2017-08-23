@@ -1,10 +1,10 @@
 ﻿public class SetUpBattleState : IBattleState {
 
-    public void OnStateEnter(IBattleStateMachine bsm) {
-        bsm.Reset();
+    public void OnStateEnter(BattleManager bm) {
+        bm.Reset();
     }
 
-    public void OnStateExit(IBattleStateMachine bsm) { }
+    public void OnStateExit(BattleManager bm) { }
 
-    public void Update(IBattleStateMachine bsm) { }
+    public void Update(BattleManager bm) { }
 }

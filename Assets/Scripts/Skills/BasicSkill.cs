@@ -9,8 +9,19 @@ abstract public class BasicSkill : Skill {
     [Range(0,9)]
     [SerializeField] private int cost;
 
-    public override string Name { get { return _name; } }
-    public override Sprite Icon { get { return icon; } }
-    public override float Range { get { return range; } }
-    public override int Cost { get { return cost; } }
+    public override Sprite GetIcon(Character character) {
+        return icon;
+    }
+
+    public override string GetName(Character character) {
+        return _name;
+    }
+
+    public override float GetRange(Character character) {
+        return range;
+    }
+
+    public override int GetCost(Character character) {
+        return cost;
+    }
 }

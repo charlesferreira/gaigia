@@ -25,6 +25,10 @@ public class Character : MonoBehaviour {
     public Team Team { get { return _team; } }
     public Sprite Avatar { get { return _avatar; } }
 
+    public bool HasEnoughAP() {
+        return AP.Left >= Skill.GetCost(this);
+    }
+
     public Weapon Weapon {
         get { return _weapon ?? Weapon.Unarmed; }
         private set { _weapon = value; }
@@ -62,12 +66,14 @@ public class Character : MonoBehaviour {
         CalculateStats();
     }
 
-    public void SelectNextSkill() {
+    public void SelectNextSkill(SkillRange skillRange) {
         SkillSet.SelectNextSkill();
+        skillRange.SetRange(Skill.GetRange(this));
     }
 
-    public void SelectPreviousSkill() {
+    public void SelectPreviousSkill(SkillRange skillRange) {
         SkillSet.SelectPreviousSkill();
+        skillRange.SetRange(Skill.GetRange(this));
     }
 
     private void Awake() {

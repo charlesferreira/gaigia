@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 
-public class MovementArea : Singleton<MovementArea> {
+public class MovementArea : MonoBehaviour {
+
+    public const int MaxMovementPoints = 5;
 
     [SerializeField] private SpriteRenderer circlePrefab;
     [SerializeField] private Transform spritesContainer;
@@ -10,10 +12,6 @@ public class MovementArea : Singleton<MovementArea> {
     [SerializeField] private float minAlpha;
     [Range(0, 1)]
     [SerializeField] private float maxAlpha;
-    [Range(2, 9)]
-    [SerializeField] private int maxMovementPoints = 5;
-
-    public int MaxMovementPoints { get { return maxMovementPoints; } }
 
     public void SetUp(Character character) {
         SetActive(character.Team == Team.Player);

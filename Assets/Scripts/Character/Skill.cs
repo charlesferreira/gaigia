@@ -7,12 +7,11 @@ abstract public class Skill : MonoBehaviour {
     [EnumFlags]
     [SerializeField] private TargetFlag targetFlag;
 
-    abstract public string Name { get; }
-    abstract public Sprite Icon { get; }
-    abstract public float Range { get; }
-    abstract public int Cost { get; }
-
     abstract public IEnumerator OnCast(Character source, Character target);
+    abstract public Sprite GetIcon(Character character);
+    abstract public string GetName(Character character);
+    abstract public float GetRange(Character character);
+    abstract public int GetCost(Character character);
 
     public void Cast(Character source, Character target, Action OnFinish) {
         var skill = Instantiate(gameObject).GetComponent<Skill>();
@@ -31,7 +30,8 @@ abstract public class Skill : MonoBehaviour {
     }
 
     private bool TargetIsInRange(Character source, Character target) {
-        return target.SqrDistance(source) < Range * Range;
+        var range = GetRange(source);
+        return target.SqrDistance(source) < range * range;
     }
 
     private bool TeamsMatchTargetFlag(Character source, Character target) {

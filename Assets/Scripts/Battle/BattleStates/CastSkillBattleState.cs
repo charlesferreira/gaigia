@@ -1,13 +1,13 @@
 ﻿public class CastSkillBattleState : IBattleState {
 
-    public void OnStateEnter(IBattleStateMachine bsm) {
-        bsm.ActiveCharacter.Skill.Cast(bsm.ActiveCharacter, bsm.SelectedTarget, () => {
-            bsm.SetState<PrepareNextTurnBattleState>();
+    public void OnStateEnter(BattleManager bm) {
+        bm.Character.Skill.Cast(bm.Character, bm.Target, () => {
+            bm.SetState<PrepareNextTurnBattleState>();
         });
     }
 
-    public void OnStateExit(IBattleStateMachine bsm) { }
+    public void OnStateExit(BattleManager bm) { }
 
-    public void Update(IBattleStateMachine bsm) { }
+    public void Update(BattleManager bm) { }
 
 }

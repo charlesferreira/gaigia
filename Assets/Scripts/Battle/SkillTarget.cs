@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SkillTarget : Singleton<SkillTarget> {
+public class SkillTarget : MonoBehaviour {
 
     SpriteRenderer sr;
 

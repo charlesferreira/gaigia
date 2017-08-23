@@ -13,6 +13,8 @@ public class BattleCamera : Singleton<BattleCamera> {
 
     Vector3 panOffset;
 
+    protected BattleCamera() {}
+
     public void SetTarget(Transform target) {
         this.target = target;
     }

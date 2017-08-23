@@ -5,8 +5,8 @@ using UnityEngine.UI;
 using UnityEditor;
 #endif
 
-public class SkillSetHUD : Singleton<SkillSetHUD> {
-
+public class SkillSetHUD : MonoBehaviour {
+    
     [SerializeField] private Transform container;
     [SerializeField] private SkillIcon skillIconPrefab;
     [SerializeField] private Text skillName;
@@ -18,14 +18,14 @@ public class SkillSetHUD : Singleton<SkillSetHUD> {
 
     private List<SkillIcon> skillIcons;
     private float RotationAngleFrom { get { return container.rotation.eulerAngles.z; } }
-    private float RotationAngleTo { get { return 360 * skillSet.CurrentSkillIndex / skillSet.Count; } }
-    private SkillSet skillSet;
+    private float RotationAngleTo { get { return 360 * SkillSet.CurrentSkillIndex / SkillSet.Count; } }
 
-    protected SkillSetHUD() { }
+    private Character Character { get; set; }
+    private SkillSet SkillSet { get { return Character.SkillSet; } }
 
     public void SetUp(Character character) {
         SetActive(character.Team == Team.Player);
-        skillSet = character.GetComponent<SkillSet>();
+        Character = character;
         ResetRotation();
         SetUpSkillIcons();
     }
@@ -39,10 +39,10 @@ public class SkillSetHUD : Singleton<SkillSetHUD> {
     }
 
     private void SetUpSkillIcons() {
-        for (var i = 0; i < skillSet.Count; i++) {
+        for (var i = 0; i < SkillSet.Count; i++) {
             SpawnSkillIcon(i);
-            skillIcons[i].SetSkill(skillSet[i]);
-            skillIcons[i].SetPosition(radius, (float)(i - skillSet.CurrentSkillIndex) / skillSet.Count);
+            skillIcons[i].SetSprite(SkillSet[i].GetIcon(Character));
+            skillIcons[i].SetPosition(radius, (float)(i - SkillSet.CurrentSkillIndex) / SkillSet.Count);
             skillIcons[i].SetActive(true);
         }
         HideUnusedIcons();
@@ -51,11 +51,12 @@ public class SkillSetHUD : Singleton<SkillSetHUD> {
     private void SpawnSkillIcon(int index) {
         if (index < skillIcons.Count) return;
 
-        skillIcons.Add(Instantiate(skillIconPrefab, container));
+        var icon = Instantiate(skillIconPrefab, container);
+        skillIcons.Add(icon);
     }
 
     private void HideUnusedIcons() {
-        for (var i = skillSet.Skills.Count; i < skillIcons.Count; i++) {
+        for (var i = SkillSet.Skills.Count; i < skillIcons.Count; i++) {
             skillIcons[i].SetActive(false);
         }
     }
@@ -65,12 +66,12 @@ public class SkillSetHUD : Singleton<SkillSetHUD> {
     }
 
     private void LateUpdate() {
-        if (skillSet == null) return;
+        if (Character == null) return;
 
         var deltaAngle = Mathf.DeltaAngle(RotationAngleFrom, RotationAngleTo);
         var rotationAngle = RotationAngleFrom + deltaAngle * (1f - rotationDamping) * rotationSpeed * Time.deltaTime;
         container.rotation = Quaternion.Euler(new Vector3(0, 0, rotationAngle));
-        skillName.text = skillSet.CurrentSkill.Name;
+        skillName.text = SkillSet.CurrentSkill.GetName(Character);
     }
 
 #if UNITY_EDITOR

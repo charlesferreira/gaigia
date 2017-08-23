@@ -2,25 +2,26 @@
 
 public class SetSkillAndPositionBattleState : IBattleState {
 
-    public void OnStateEnter(IBattleStateMachine bsm) {
-        bsm.ActivateCurrentCharacter();
-        BattleCamera.Instance.SetTarget(bsm.ActiveCharacter.transform);
+    public void OnStateEnter(BattleManager bm) {
+        bm.ActivateCurrentCharacter();
+        BattleCamera.Instance.SetTarget(bm.Character.transform);
     }
 
-    public void OnStateExit(IBattleStateMachine bsm) {
-        bsm.ActiveCharacter.Movement.Stop();
+    public void OnStateExit(BattleManager bm) {
+        bm.Character.Movement.Stop();
     }
 
-    public void Update(IBattleStateMachine bsm) {
-        bsm.UpdateTargets();
-        SetPosition(bsm);
+    public void Update(BattleManager bm) {
+        bm.UpdateTargets();
         SetCameraPan();
-        SelectSkill(bsm);
+        SetPosition(bm);
+        SelectSkill(bm);
+        UpdateSkillRange(bm);
     }
 
-    private void SetPosition(IBattleStateMachine bsm) {
+    private void SetPosition(BattleManager bm) {
         var input = new Vector2(PlayerInput.LeftStickHorizontal, PlayerInput.LeftStickVertical);
-        bsm.ActiveCharacter.Movement.Walk(input);
+        bm.Character.Movement.Walk(input);
     }
 
     private void SetCameraPan() {
@@ -29,15 +30,19 @@ public class SetSkillAndPositionBattleState : IBattleState {
         BattleCamera.Instance.Pan(panX, panZ);
     }
 
-    private void SelectSkill(IBattleStateMachine bsm) {
+    private void SelectSkill(BattleManager bm) {
         if (PlayerInput.RightShoulder) {
-            bsm.ActiveCharacter.SelectNextSkill();
+            bm.Character.SelectNextSkill(bm.SkillRange);
         }
         if (PlayerInput.LeftShoulder) {
-            bsm.ActiveCharacter.SelectPreviousSkill();
+            bm.Character.SelectPreviousSkill(bm.SkillRange);
         }
-        if (PlayerInput.Confirm && SkillRange.Instance.SkillIsReady) {
-            bsm.SetState<SelectTargetBattleState>();
+        if (PlayerInput.Confirm && bm.SkillIsReady()) {
+            bm.SetState<SelectTargetBattleState>();
         }
+    }
+
+    private void UpdateSkillRange(BattleManager bm) {
+        bm.SkillRange.UpdateColor(bm.Character.HasEnoughAP(), bm.Targets.Count > 0);
     }
 }

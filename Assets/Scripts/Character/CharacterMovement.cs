@@ -20,7 +20,7 @@ public class CharacterMovement : MonoBehaviour {
     private Vector3 Center { get; set; }
     private float MaxDistance { get { return (float) character.Stats.Movement / MovementPerUnit; } }
     private float MovementSpeed { get { return movementSpeedFactor * Mathf.Min(MaxMovementSpeed, character.Stats.Movement); } }
-    private int MaxMovementPoints { get { return MovementArea.Instance.MaxMovementPoints; } }
+    private int MaxMovementPoints { get { return MovementArea.MaxMovementPoints; } }
 
     public void SetActive(bool active) {
         Stop();
@@ -56,10 +56,5 @@ public class CharacterMovement : MonoBehaviour {
 
     private void FixedUpdate() {
         transform.Translate(new Vector3(Input.x, 0, Input.y) * MovementSpeed * Time.fixedDeltaTime);
-    }
-
-    private void Update() {
-        if (PlayerInput.Confirm)
-            print(Cost);
     }
 }

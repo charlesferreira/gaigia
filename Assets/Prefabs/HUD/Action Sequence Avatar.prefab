@@ -209,6 +209,8 @@ MonoBehaviour:
   avatar: {fileID: 114363353479039944}
   frame: {fileID: 114040981599055070}
   turnLabel: {fileID: 114253593230784964}
+  idleColor: {r: 0.11372549, g: 0.1882353, b: 0.47058824, a: 0.91764706}
+  activeColor: {r: 0.47058824, g: 0.11372549, b: 0.11372549, a: 0.91764706}
 --- !u!114 &114613644230236246
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1,4 +1,4 @@
-﻿public class SelectTargetBattleState : IBattleState {
+﻿public class SelectTargetBattleState : ISimpleState<BattleManager> {
 
     public void OnStateEnter(BattleManager bm) {
         bm.ResetTarget();

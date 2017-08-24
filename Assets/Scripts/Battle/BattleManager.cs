@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-public class BattleManager : MonoBehaviour {
+public class BattleManager : SimpleStateMachine<BattleManager> {
 
     [SerializeField] private List<Character> _characters;
     [SerializeField] private MovementArea _movementArea;
@@ -10,9 +10,7 @@ public class BattleManager : MonoBehaviour {
     [SerializeField] private SkillTarget _skillTarget;
     [SerializeField] private SkillSetHUD _skillSetHUD;
     [SerializeField] private ActionSequence _actionSequence;
-
-    private IBattleState CurrentState { get; set; }
-    private IList<IBattleState> States { get; set; }
+    
     private int ActiveCharacterIndex { get; set; }
     private int SelectedTargetIndex { get; set; }
 
@@ -27,27 +25,9 @@ public class BattleManager : MonoBehaviour {
     public SkillSetHUD SkillSetHUD { get { return _skillSetHUD; } }
     public ActionSequence ActionSequence { get { return _actionSequence; } }
 
-    public void Reset() {
+    public void ResetBattle() {
         ActiveCharacterIndex = -1;
         SetState<PrepareNextTurnBattleState>();
-    }
-
-    public void SetState<T>() where T : IBattleState {
-        if (CurrentState != null)
-            CurrentState.OnStateExit(this);
-        CurrentState = States.OfType<T>().First();
-        CurrentState.OnStateEnter(this);
-    }
-
-    private void SetUpStates() {
-        States = new List<IBattleState> {
-            new SetUpBattleState(),
-            new PrepareNextTurnBattleState(),
-            new SetSkillAndPositionBattleState(),
-            new SelectTargetBattleState(),
-            new CastSkillBattleState(),
-        };
-        SetState<SetUpBattleState>();
     }
 
     public void SelectNextCharacter() {
@@ -85,16 +65,23 @@ public class BattleManager : MonoBehaviour {
         return Character.AP.Left >= Character.Skill.GetCost(Character) && Targets.Count > 0;
     }
 
-    private void Awake() {
+    protected override IList<ISimpleState<BattleManager>> CreateStates() {
+        return new List<ISimpleState<BattleManager>> {
+            new SetUpBattleState(),
+            new PrepareNextTurnBattleState(),
+            new SetSkillAndPositionBattleState(),
+            new SelectTargetBattleState(),
+            new CastSkillBattleState(),
+        };
+    }
+
+    protected new void Awake() {
+        base.Awake();
         Targets = new List<Character>();
     }
 
-    private void Start() {
+    protected new void Start() {
+        base.Start();
         ActionSequence.CreatePortraits(Characters);
-        SetUpStates();
-    }
-
-    private void Update() {
-        CurrentState.Update(this);
     }
 }

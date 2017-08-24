@@ -1,4 +1,4 @@
-﻿public class CastSkillBattleState : IBattleState {
+﻿public class CastSkillBattleState : ISimpleState<BattleManager> {
 
     public void OnStateEnter(BattleManager bm) {
         bm.Character.Skill.Cast(bm.Character, bm.Target, () => {

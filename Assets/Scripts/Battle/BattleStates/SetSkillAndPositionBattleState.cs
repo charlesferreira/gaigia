@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SetSkillAndPositionBattleState : IBattleState {
+public class SetSkillAndPositionBattleState : ISimpleState<BattleManager> {
 
     public void OnStateEnter(BattleManager bm) {
         bm.ActivateCurrentCharacter();

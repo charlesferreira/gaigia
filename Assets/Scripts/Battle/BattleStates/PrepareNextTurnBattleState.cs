@@ -1,4 +1,4 @@
-﻿public class PrepareNextTurnBattleState : IBattleState {
+﻿public class PrepareNextTurnBattleState : ISimpleState<BattleManager> {
 
     public void OnStateEnter(BattleManager bm) {
         bm.SelectNextCharacter();

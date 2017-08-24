@@ -1,16 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class DungeonManager : MonoBehaviour {
+public class DungeonManager : SimpleStateMachine<DungeonManager> {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    [SerializeField] private Character _character;
+
+    public Character Character { get { return _character; } }
+
+    protected override IList<ISimpleState<DungeonManager>> CreateStates() {
+        return new List<ISimpleState<DungeonManager>> {
+            new ExploringDungeonState()
+        };
+    }
 }

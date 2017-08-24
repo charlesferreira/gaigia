@@ -1,7 +1,7 @@
-﻿public class SetUpBattleState : IBattleState {
+﻿public class SetUpBattleState : ISimpleState<BattleManager> {
 
     public void OnStateEnter(BattleManager bm) {
-        bm.Reset();
+        bm.ResetBattle();
     }
 
     public void OnStateExit(BattleManager bm) { }

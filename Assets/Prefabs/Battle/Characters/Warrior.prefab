@@ -38,6 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4176448170183106}
   - component: {fileID: 65923235026886198}
+  - component: {fileID: 65991483544200842}
   - component: {fileID: 54472203680954994}
   - component: {fileID: 114999436398256438}
   - component: {fileID: 114168719808902148}
@@ -47,7 +48,7 @@ GameObject:
   - component: {fileID: 114325814311904530}
   m_Layer: 0
   m_Name: Warrior
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,6 +106,18 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!65 &65991483544200842
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1865965430294768}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 2, z: 1.5}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!95 &95351147871436294
 Animator:

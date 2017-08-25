@@ -11,5 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d1f369f91eb3e14fa94a2a6c5b3b2f4, type: 3}
   m_Name: Quick Boots
   m_EditorClassIdentifier: 
+  _name: Quick Boots
+  _icon: {fileID: 21300188, guid: ba8d40673cd44f943ab353968d692e1f, type: 3}
   bonusStats: {fileID: 11400000, guid: 84e5017e9fe309741bac29de3608aaf2, type: 2}
   defense: 0

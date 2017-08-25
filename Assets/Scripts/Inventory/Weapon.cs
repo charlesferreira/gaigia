@@ -4,8 +4,6 @@
 public class Weapon : Equipment {
 
     [Header("Weapon")]
-    [SerializeField] private string _name = "Unarmed";
-    [SerializeField] private Sprite icon;
     [SerializeField] private int attack;
     [Range(0, 5)]
     [SerializeField] private float range = 1;
@@ -19,9 +17,7 @@ public class Weapon : Equipment {
             return nullInstance;
         }
     }
-
-    public string Name { get { return _name; } }
-    public Sprite Icon { get { return icon; } }
+    
     public int Attack { get { return attack; } }
     public float Range { get { return range; } }
 }

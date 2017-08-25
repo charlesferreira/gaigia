@@ -5,6 +5,11 @@ public class LootCollector : MonoBehaviour {
 
     private IList<Loot> LootNearby { get; set; }
 
+    private void Collect(Loot loot) {
+        loot.Collect();
+        LootNearby.Remove(loot);
+    }
+
     private void OnTriggerEnter(Collider other) {
         var loot = other.GetComponent<Loot>();
         if (!loot) return;
@@ -27,8 +32,7 @@ public class LootCollector : MonoBehaviour {
 
     private void Update() {
         if (PlayerInput.Confirm && LootNearby.Count > 0) {
-            LootNearby[0].Collect();
-            LootNearby.RemoveAt(0);
+            Collect(LootNearby[0]);
         }
     }
 }

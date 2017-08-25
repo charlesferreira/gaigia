@@ -343,6 +343,7 @@ GameObject:
   m_Component:
   - component: {fileID: 102066713}
   - component: {fileID: 102066714}
+  - component: {fileID: 102066715}
   m_Layer: 0
   m_Name: chestOpen
   m_TagString: Untagged
@@ -362,7 +363,7 @@ Transform:
   m_Children:
   - {fileID: 273207681}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &102066714
 BoxCollider:
@@ -376,6 +377,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1, z: 0.5}
   m_Center: {x: 0.21, y: 0.48, z: 0}
+--- !u!114 &102066715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 102066712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcbae4793fc02d34289feef9cff1d3a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 273207683}
+  item: {fileID: 11400000, guid: b6da7bfc8c919424792a173097dab966, type: 2}
+  quantity: 3
 --- !u!1 &107051547
 GameObject:
   m_ObjectHideFlags: 0
@@ -1075,7 +1090,7 @@ Transform:
   - {fileID: 1679024327}
   - {fileID: 1381321488}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &499109294 stripped
 GameObject:
@@ -1205,7 +1220,7 @@ Transform:
   m_Children:
   - {fileID: 1498175308}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &534675763
 BoxCollider:
@@ -1231,6 +1246,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 1498175310}
+  item: {fileID: 11400000, guid: 47617eb0cb1a21246b27a4278e38891c, type: 2}
+  quantity: 1
 --- !u!1 &574023070
 GameObject:
   m_ObjectHideFlags: 0
@@ -1397,6 +1414,47 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &724779860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 724779862}
+  - component: {fileID: 724779861}
+  m_Layer: 0
+  m_Name: Inventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &724779861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 724779860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d37e1355f6b58cd419b6d4ba178c134f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemList: []
+--- !u!4 &724779862
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 724779860}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &803034740
 GameObject:
   m_ObjectHideFlags: 0
@@ -1455,7 +1513,7 @@ Transform:
   - {fileID: 2009366710}
   - {fileID: 1652026165}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &877771672
 Prefab:
@@ -3921,7 +3979,7 @@ Transform:
   m_Children:
   - {fileID: 1086492284}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1967968456
 MonoBehaviour:
@@ -3935,6 +3993,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 1086492283}
+  item: {fileID: 11400000, guid: b6da7bfc8c919424792a173097dab966, type: 2}
+  quantity: 1
 --- !u!1 &2003986108
 GameObject:
   m_ObjectHideFlags: 0

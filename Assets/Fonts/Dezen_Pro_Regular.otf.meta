@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: a34ba8cb5280d0b4ea6514ae6c2bac85
+timeCreated: 1503949954
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 32
+  forceTextureCase: -1
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Dezen Pro
+  fontNames:
+  - Dezen Pro
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 1
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

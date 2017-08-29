@@ -11,18 +11,14 @@ public class ActionSequenceAvatar : MonoBehaviour {
 
     private Character character;
 
-    private Color Color {
-        set {
-            frame.color = turnLabel.color = value;
-        }
-    }
+    private Color Color { set { frame.color = turnLabel.color = value; } }
 
     public void SetUp(Character character) {
         this.character = character;
         avatar.overrideSprite = character.Avatar;
     }
 
-    internal void SetActive(Character activeCharacter) {
+    public void SetActive(Character activeCharacter) {
         var active = activeCharacter == character;
         turnLabel.gameObject.SetActive(active);
         Color = active ? activeColor : idleColor;

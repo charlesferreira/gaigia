@@ -15,12 +15,13 @@ public class ActionSequence : MonoBehaviour {
         }
     }
 
-    public void CreatePortraits(IList<Character> characters) {
-        var lastPosition = transform.position + Vector3.left * avatarWidth * (characters.Count - 1);
-        foreach (var character in characters) {
+    public void CreatePortraits(BattleManager bm) {
+        var lastPosition = transform.position + Vector3.left * avatarWidth * (bm.Characters.Count - 1);
+        foreach (var character in bm.Characters) {
             var avatar = Instantiate(avatarPrefab, transform);
             avatars.Add(avatar);
             avatar.SetUp(character);
+            avatar.SetActive(bm.Character);
             avatar.transform.position = lastPosition;
             lastPosition += Vector3.right * avatarWidth;
         }

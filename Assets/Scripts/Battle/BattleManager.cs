@@ -82,6 +82,6 @@ public class BattleManager : SimpleStateMachine<BattleManager> {
 
     protected new void Start() {
         base.Start();
-        ActionSequence.CreatePortraits(Characters);
+        ActionSequence.CreatePortraits(this);
     }
 }

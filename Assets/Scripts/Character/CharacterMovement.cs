@@ -55,6 +55,6 @@ public class CharacterMovement : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        transform.Translate(new Vector3(Input.x, 0, Input.y) * MovementSpeed * Time.fixedDeltaTime);
+        transform.Translate(new Vector3(Input.x, 0, Input.y).normalized * MovementSpeed * Time.fixedDeltaTime);
     }
 }

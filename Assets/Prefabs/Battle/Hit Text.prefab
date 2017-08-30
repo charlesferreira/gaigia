@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4628908391312420}
   - component: {fileID: 23903910569507468}
   - component: {fileID: 102296877955937676}
-  - component: {fileID: 114688740672115974}
   - component: {fileID: 95397032032752462}
   m_Layer: 0
   m_Name: Text
@@ -39,6 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4276459227432246}
   - component: {fileID: 114578694712040544}
+  - component: {fileID: 114540468869389292}
   m_Layer: 0
   m_Name: Hit Text
   m_TagString: Untagged
@@ -53,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1733010135562618}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.25, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4628908391312420}
@@ -66,13 +66,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1357648937090352}
-  m_LocalRotation: {x: 0.30070576, y: -0, z: -0, w: 0.953717}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4276459227432246}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 35, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23903910569507468
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -86,7 +86,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 45b01db48c6ed484187e1c757f3f145b, type: 3}
+  - {fileID: 2100000, guid: a34ba8cb5280d0b4ea6514ae6c2bac85, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -129,11 +129,9 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1357648937090352}
-  m_Text: '11
-
-'
+  m_Text: 90
   m_OffsetZ: 0
-  m_CharacterSize: 0.075
+  m_CharacterSize: 0.25
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 1
@@ -141,10 +139,21 @@ TextMesh:
   m_FontSize: 0
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 12800000, guid: 45b01db48c6ed484187e1c757f3f145b, type: 3}
+  m_Font: {fileID: 12800000, guid: a34ba8cb5280d0b4ea6514ae6c2bac85, type: 3}
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
+--- !u!114 &114540468869389292
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1733010135562618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1639ad1613e4c9c459816099d4037608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114578694712040544
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -157,14 +166,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 95397032032752462}
---- !u!114 &114688740672115974
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1357648937090352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1639ad1613e4c9c459816099d4037608, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  damageColor: {r: 0.77205884, g: 0, b: 0, a: 1}
+  healingColor: {r: 0, g: 0.63235295, b: 0.056693707, a: 1}

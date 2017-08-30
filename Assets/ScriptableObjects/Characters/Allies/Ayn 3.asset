@@ -14,7 +14,7 @@ MonoBehaviour:
   vitality: 3
   mana: 9
   strength: 10
-  spirit: 6
+  mind: 10
   dexterity: 7
   charisma: 10
   luck: 5

@@ -2,9 +2,9 @@
 
 public class PlayerInput {
 
-    public static float LeftStickHorizontal { get { return Input.GetAxisRaw("Horizontal"); } }
+    public static float LeftStickHorizontal { get { return Input.GetAxis("Horizontal"); } }
 
-    public static float LeftStickVertical { get { return Input.GetAxisRaw("Vertical"); } }
+    public static float LeftStickVertical { get { return Input.GetAxis("Vertical"); } }
 
     public static float RightStickHorizontal { get { return Input.GetAxis("Right Horizontal"); } }
 

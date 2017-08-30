@@ -16,8 +16,7 @@ public class ActionSequenceAvatar : MonoBehaviour {
     public void SetUp(Character character) {
         this.character = character;
         avatar.overrideSprite = character.Avatar;
-
-        print("Apenas para fins de debug...");
+        
         avatar.color = character.GetComponentInChildren<SpriteRenderer>().color;
     }
 

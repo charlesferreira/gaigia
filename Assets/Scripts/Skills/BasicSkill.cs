@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 
 abstract public class BasicSkill : Skill {
-
-    [SerializeField] private string _name;
+    
     [SerializeField] private Sprite icon;
     [Range(0, 20)]
     [SerializeField] private float range;
@@ -14,7 +13,7 @@ abstract public class BasicSkill : Skill {
     }
 
     public override string GetName(Character character) {
-        return _name;
+        return name;
     }
 
     public override float GetRange(Character character) {

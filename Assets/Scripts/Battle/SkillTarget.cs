@@ -6,8 +6,20 @@ public class SkillTarget : MonoBehaviour {
 
     public void SetTarget(Character target) {
         var targetSprite = target.GetComponentInChildren<SpriteRenderer>();
-        transform.position = targetSprite.transform.position;
-        transform.rotation = targetSprite.transform.rotation;
+
+        MoveToParent(targetSprite.transform);
+        SetHeight(targetSprite);
+    }
+
+    private void MoveToParent(Transform transform) {
+        this.transform.SetParent(transform);
+        this.transform.localPosition = Vector3.zero;
+    }
+
+    private void SetHeight(SpriteRenderer sr) {
+        var position = transform.localPosition;
+        position.y = sr.GetMaxY();
+        transform.localPosition = position;
     }
 
     public void SetActive(bool active) {

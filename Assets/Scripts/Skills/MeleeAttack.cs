@@ -19,11 +19,11 @@ public class MeleeAttack : Skill {
 
         yield return new WaitForSeconds(1.0f);
         target.Animation.SetState(CharacterAnimationState.Idle);
-        target.Health.TakeDamage(CalculateDamage(source));
+        target.Health.TakeDamage(CalculateDamage(source, target));
     }
 
     public override string GetName(Character character) {
-        return character.Weapon.Name;
+        return character.Weapon.name;
     }
 
     public override Sprite GetIcon(Character character) {
@@ -38,7 +38,10 @@ public class MeleeAttack : Skill {
         return cost;
     }
 
-    private int CalculateDamage(Character character) {
-        return 17;
+    private int CalculateDamage(Character source, Character target) {
+        int damage = 0;
+        damage += source.Stats.Strength + source.Weapon.Attack;
+        damage -= target.Stats.Strength + target.Armor.Defense;
+        return Mathf.Max(0,  damage);
     }
 }

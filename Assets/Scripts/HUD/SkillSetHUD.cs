@@ -10,11 +10,15 @@ public class SkillSetHUD : MonoBehaviour {
     [SerializeField] private Transform container;
     [SerializeField] private SkillIcon skillIconPrefab;
     [SerializeField] private Text skillName;
+    [SerializeField] private Text skillCost;
     [SerializeField] private float radius;
     [Range(0, 1)]
     [SerializeField] private float rotationDamping;
     [Range(1, 100)]
     [SerializeField] private float rotationSpeed;
+
+    [Header("Debug")]
+    [SerializeField] private bool alwaysActive;
 
     private List<SkillIcon> skillIcons;
     private float RotationAngleFrom { get { return container.rotation.eulerAngles.z; } }
@@ -31,7 +35,7 @@ public class SkillSetHUD : MonoBehaviour {
     }
 
     private void SetActive(bool active) {
-        gameObject.SetActive(active);
+        gameObject.SetActive(active || alwaysActive);
     }
 
     private void ResetRotation() {
@@ -72,6 +76,7 @@ public class SkillSetHUD : MonoBehaviour {
         var rotationAngle = RotationAngleFrom + deltaAngle * (1f - rotationDamping) * rotationSpeed * Time.deltaTime;
         container.rotation = Quaternion.Euler(new Vector3(0, 0, rotationAngle));
         skillName.text = SkillSet.CurrentSkill.GetName(Character);
+        skillCost.text = SkillSet.CurrentSkill.GetCost(Character).ToString();
     }
 
 #if UNITY_EDITOR

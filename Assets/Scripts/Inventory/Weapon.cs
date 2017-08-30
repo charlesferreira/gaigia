@@ -5,7 +5,7 @@ public class Weapon : Equipment {
 
     [Header("Weapon")]
     [SerializeField] private int attack;
-    [Range(0, 5)]
+    [Range(0, 10)]
     [SerializeField] private float range = 1;
 
     private static Weapon nullInstance;

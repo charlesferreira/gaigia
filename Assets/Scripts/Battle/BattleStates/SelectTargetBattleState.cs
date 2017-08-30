@@ -16,9 +16,19 @@
             return;
         }
 
-        if (PlayerInput.RightShoulder) { bm.SelectNextTarget(); }
-        if (PlayerInput.LeftShoulder)  { bm.SelectPreviousTarget(); }
-        if (PlayerInput.Confirm)       { bm.SetState<CastSkillBattleState>(); }
+        if (PlayerInput.RightShoulder) {
+            bm.SelectNextTarget();
+            UpdateTarget(bm);
+        }
+
+        if (PlayerInput.LeftShoulder) {
+            bm.SelectPreviousTarget();
+            UpdateTarget(bm);
+        }
+
+        if (PlayerInput.Confirm) {
+            bm.SetState<CastSkillBattleState>();
+        }
     }
 
     private void UpdateTarget(BattleManager bm) {

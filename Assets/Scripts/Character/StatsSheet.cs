@@ -35,7 +35,7 @@ public class StatsSheet : ScriptableObject {
     public int Luck      { get { return luck; } }
     public int Movement  { get { return baseMovement + Dexterity; } }
     public int Energy    { get { return baseEnergy + Mana; } }
-    public int MaxHp     { get { return vitality + strength; } }
+    public int MaxHP     { get { return vitality + strength; } }
 
     public static StatsSheet operator +(StatsSheet a, StatsSheet b) {
         var stats = CreateInstance<StatsSheet>();

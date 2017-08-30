@@ -54,5 +54,5 @@ MonoBehaviour:
   targetFlag: 4
   _name: Fire Ball
   icon: {fileID: 21300138, guid: ba8d40673cd44f943ab353968d692e1f, type: 3}
-  range: 12
+  range: 8
   cost: 4

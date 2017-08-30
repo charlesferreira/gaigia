@@ -3,6 +3,7 @@
 public class MovementArea : MonoBehaviour {
 
     public const int MaxMovementPoints = 5;
+    public const int BaseCharacterMovement = 15;
 
     [SerializeField] private SpriteRenderer circlePrefab;
     [SerializeField] private Transform spritesContainer;
@@ -13,19 +14,27 @@ public class MovementArea : MonoBehaviour {
     [Range(0, 1)]
     [SerializeField] private float maxAlpha;
 
+    [Header("Debug")]
+    [SerializeField] private bool alwaysActive;
+
     public void SetUp(Character character) {
         SetActive(character.Team == Team.Player);
         SetPosition(character.transform.position);
+        SetScale(character.Stats.Movement);
         character.Movement.SetCenter();
     }
 
     private void SetActive(bool active) {
-        spritesContainer.gameObject.SetActive(active);
+        spritesContainer.gameObject.SetActive(active || alwaysActive);
     }
 
     private void SetPosition(Vector3 position) {
         position.y = transform.position.y;
         transform.position = position;
+    }
+
+    private void SetScale(int movement) {
+        transform.localScale = Vector3.one * movement / BaseCharacterMovement;
     }
 
     private void Awake() {

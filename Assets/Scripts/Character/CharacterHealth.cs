@@ -12,4 +12,8 @@ public class CharacterHealth : MonoBehaviour {
         var hitText = Instantiate(hitTextPrefab, transform);
         hitText.SetText(amount.ToString());
     }
+
+    private void Start() {
+        HP = GetComponent<Character>().Stats.MaxHP;
+    }
 }

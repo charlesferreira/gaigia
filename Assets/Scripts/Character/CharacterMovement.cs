@@ -9,7 +9,7 @@ public class CharacterMovement : MonoBehaviour {
     private static float animationSpeedMin = 1.0f;
     private static float animationSpeedMax = 1.8f;
     private static float animationSpeedFactor = 2f;
-    private static float movementSpeedFactor = 0.35f;
+    private static float movementSpeedFactor = 0.425f;
 
     Rigidbody rb;
     Character character;

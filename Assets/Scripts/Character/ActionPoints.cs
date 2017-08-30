@@ -6,7 +6,7 @@ public class ActionPoints: MonoBehaviour {
     [SerializeField] private int basePoints = 5;
 
     public int Total { get { return Base + Stored; } }
-    public int Left { get { return Total - Character.Movement.Cost; } }
+    public int Left { get { return Character.Movement.enabled ? Total - Character.Movement.Cost : Total; } }
 
     private int Base { get { return basePoints; } }
     private int Stored { get; set; }
@@ -15,6 +15,10 @@ public class ActionPoints: MonoBehaviour {
 
     public void Store(int points) {
         Stored = points;
+    }
+
+    private void OnEnable() {
+        
     }
 
     private void Awake() {

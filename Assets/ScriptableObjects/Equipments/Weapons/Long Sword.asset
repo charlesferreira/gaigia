@@ -14,5 +14,5 @@ MonoBehaviour:
   _name: Long Sword
   _icon: {fileID: 21300134, guid: ba8d40673cd44f943ab353968d692e1f, type: 3}
   bonusStats: {fileID: 0}
-  attack: 5
+  attack: 4
   range: 2.5

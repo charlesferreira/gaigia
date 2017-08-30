@@ -4,6 +4,9 @@ public class SkillRange : MonoBehaviour {
 
     [SerializeField] private SpriteRenderer circle;
 
+    [Header("Debug")]
+    [SerializeField] private bool alwaysActive;
+
     public void SetUp(Character character) {
         SetActive(character.Team == Team.Player);
         SetParent(character.transform);
@@ -24,7 +27,7 @@ public class SkillRange : MonoBehaviour {
 
     private void SetActive(bool active) {
         foreach (Transform child in transform) {
-            child.gameObject.SetActive(active);
+            child.gameObject.SetActive(active || alwaysActive);
         }
     }
 

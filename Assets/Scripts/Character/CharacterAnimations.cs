@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public partial class CharacterAnimations : MonoBehaviour {
+public class CharacterAnimations : MonoBehaviour {
 
     private Animator anim;
     private Dictionary<Direction, int> layerIndices;

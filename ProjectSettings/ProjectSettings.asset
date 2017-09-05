@@ -75,7 +75,7 @@ PlayerSettings:
   usePlayerLog: 0
   bakeCollisionMeshes: 0
   forceSingleInstance: 0
-  resizableWindow: 0
+  resizableWindow: 1
   useMacAppStoreValidation: 0
   macAppStoreCategory: public.app-category.games
   gpuSkinning: 0
@@ -658,9 +658,9 @@ PlayerSettings:
     Unity_Ads: 0
   facebookSdkVersion: 7.9.1
   apiCompatibilityLevel: 2
-  cloudProjectId: c4760b7b-71d3-4f36-8214-ff8d1a5dfcd6
-  projectName: 2D Roguelike
-  organizationId: will-goldstone
+  cloudProjectId: 
+  projectName: 
+  organizationId: 
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

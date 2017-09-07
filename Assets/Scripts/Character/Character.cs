@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(ActionPoints))]
 [RequireComponent(typeof(SkillSet))]
@@ -10,6 +11,7 @@ public class Character : MonoBehaviour {
     [SerializeField] private Team _team;
     [SerializeField] private Sprite _avatar;
     [SerializeField] private StatsSheet _baseStats;
+
     [SerializeField] private Weapon _weapon;
     [SerializeField] private Armor _armor;
 
@@ -87,5 +89,11 @@ public class Character : MonoBehaviour {
 
     private void CalculateStats() {
         Stats = BaseStats + Weapon.BonusStats + Armor.BonusStats;
+    }
+
+    public static Character CreateInstance(CharacterPreset info) {
+        var mob = new GameObject(info.name);
+        return mob.AddComponent<Character>();
+
     }
 }

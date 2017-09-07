@@ -1,22 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class BattleManager : SimpleStateMachine<BattleManager> {
 
-    [SerializeField] private List<Character> _characters;
     [SerializeField] private MovementArea _movementArea;
     [SerializeField] private SkillRange _skillRange;
     [SerializeField] private SkillTarget _skillTarget;
     [SerializeField] private SkillSetHUD _skillSetHUD;
     [SerializeField] private ActionSequence _actionSequence;
-    
+
     private int ActiveCharacterIndex { get; set; }
     private int SelectedTargetIndex { get; set; }
 
     public Character Character { get { return Characters[ActiveCharacterIndex]; } }
     public Character Target { get { return Targets[SelectedTargetIndex]; } }
-    public IList<Character> Characters { get { return _characters.AsReadOnly(); } }
+    public IList<Character> Characters { get; private set; }
+    //public List<Character> Characters;
     public IList<Character> Targets { get; set; }
 
     public MovementArea MovementArea { get { return _movementArea; } }
@@ -27,7 +28,14 @@ public class BattleManager : SimpleStateMachine<BattleManager> {
 
     public void ResetBattle() {
         ActiveCharacterIndex = -1;
-        SetState<PrepareNextTurnBattleState>();
+        CreateCharacters();
+    }
+
+    private void CreateCharacters() {
+        Characters = new List<Character>();
+        foreach (var character in PlayerParty.Instance.Characters) {
+            Characters.Add(character);
+        }
     }
 
     public void SelectNextCharacter() {

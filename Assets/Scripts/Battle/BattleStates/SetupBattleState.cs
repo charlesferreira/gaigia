@@ -2,6 +2,7 @@
 
     public void OnStateEnter(BattleManager bm) {
         bm.ResetBattle();
+        bm.SetState<PrepareNextTurnBattleState>();
     }
 
     public void OnStateExit(BattleManager bm) { }

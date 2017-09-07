@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Stats Sheet")]
+[CreateAssetMenu(menuName = "Character/Stats Sheet")]
 public class StatsSheet : ScriptableObject {
 
     [Header("Primary")]

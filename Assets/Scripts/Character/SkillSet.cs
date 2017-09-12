@@ -2,21 +2,19 @@
 using UnityEngine;
 
 public class SkillSet : MonoBehaviour {
-
-    [SerializeField] private List<Skill> skills;
-
+    
     private int _currentSkillIndex;
 
-    public IList<Skill> Skills { get { return skills.AsReadOnly(); } }
+    public List<Skill> Skills { get; private set; }
 
     public int CurrentSkillIndex {
         get { return _currentSkillIndex; }
         set { _currentSkillIndex = (value + Count) % Count; }
     }
 
-    public Skill CurrentSkill { get { return skills[CurrentSkillIndex]; } }
+    public Skill CurrentSkill { get { return Skills[CurrentSkillIndex]; } }
 
-    public int Count { get { return skills.Count; } }
+    public int Count { get { return Skills.Count; } }
 
     public Skill this[int key] { get { return Skills[key]; } }
 
@@ -32,7 +30,7 @@ public class SkillSet : MonoBehaviour {
         enabled = active;
     }
 
-    private void Awake() {
-        CurrentSkillIndex = 0;
+    public void SetUp(List<Skill> skills) {
+        Skills = skills;
     }
 }

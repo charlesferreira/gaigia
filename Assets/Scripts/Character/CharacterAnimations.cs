@@ -8,6 +8,10 @@ public class CharacterAnimations : MonoBehaviour {
     private Dictionary<Direction, int> layerIndices;
     private CharacterAnimationState currentState;
 
+    public void SetUp(AnimatorOverrideController controller) {
+        anim.runtimeAnimatorController = controller;
+    }
+
     public void Face(Vector2 towards) {
         var direction = GetDirection(towards);
         foreach (var index in layerIndices)

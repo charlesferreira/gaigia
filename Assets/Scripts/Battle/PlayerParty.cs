@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerParty : Singleton<PlayerParty> {
 
+    [SerializeField] private Character prefab;
     [SerializeField] private List<CharacterPreset> presets;
 
     public List<Character> Characters { get; private set; }
@@ -10,7 +11,7 @@ public class PlayerParty : Singleton<PlayerParty> {
     private void Awake() {
         Characters = new List<Character>();
         foreach (var preset in presets) {
-            Characters.Add(Character.CreateInstance(preset));
+            Characters.Add(Character.Instantiate(prefab, preset));
         }
     }
 

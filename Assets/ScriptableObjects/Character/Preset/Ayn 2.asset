@@ -9,13 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91c9caee1f4355349aaa66a80ff1d412, type: 3}
-  m_Name: Ayn
+  m_Name: Ayn 2
   m_EditorClassIdentifier: 
   _team: 0
-  _baseStats: {fileID: 11400000, guid: e3a4cccdc5c99734cafbd71236179ab0, type: 2}
+  _baseStats: {fileID: 11400000, guid: 31b84c221bf375242b830690daa338fd, type: 2}
   _avatar: {fileID: 21300000, guid: d063e817a0bd6964a94d9523a3d38579, type: 3}
   _animator: {fileID: 22100000, guid: 3b3f586999f6eb243915eb2afe8567b0, type: 2}
-  _armor: {fileID: 11400000, guid: 47617eb0cb1a21246b27a4278e38891c, type: 2}
+  _armor: {fileID: 0}
   _weapon: {fileID: 11400000, guid: b6da7bfc8c919424792a173097dab966, type: 2}
   _skills:
   - {fileID: 114644723556772978, guid: 7f9543d6f3383374991432f34cd3592a, type: 2}

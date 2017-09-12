@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 114993293818201376}
   - component: {fileID: 114325814311904530}
   m_Layer: 0
-  m_Name: Warrior
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,7 +108,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4385784518194408}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!54 &54472203680954994
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -187,11 +187,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fcd841474a1d0b49b14487513b472ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _team: 0
-  _avatar: {fileID: 21300000, guid: d063e817a0bd6964a94d9523a3d38579, type: 3}
-  _baseStats: {fileID: 11400000, guid: e3a4cccdc5c99734cafbd71236179ab0, type: 2}
-  _weapon: {fileID: 11400000, guid: 3223fdd28da654a439eb979ae154df9c, type: 2}
-  _armor: {fileID: 0}
 --- !u!114 &114325814311904530
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -203,7 +198,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d64b50e77d15784b98f10d7dfc9d491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basePoints: 5
 --- !u!114 &114343528056385846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -239,11 +233,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f997fbe8d24cff74d92bd5a5cf52e0c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skills:
-  - {fileID: 114644723556772978, guid: 7f9543d6f3383374991432f34cd3592a, type: 2}
-  - {fileID: 114841202943652312, guid: 8f3047e2cbd3be34a9c0cd41fc2c75c0, type: 2}
-  - {fileID: 114685834251793068, guid: cddaf53d804a898418f4706021e3f47b, type: 2}
-  - {fileID: 114837633215696098, guid: bb5b76ffba0eb0e4588b47a9137ed0f2, type: 2}
 --- !u!114 &114999436398256438
 MonoBehaviour:
   m_ObjectHideFlags: 1

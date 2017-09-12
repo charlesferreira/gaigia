@@ -374,7 +374,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5b7edf09d165814c92ca0632ee130ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 0}
+  characterIndex: 1
+  battleManager: {fileID: 0}
   avatar: {fileID: 114671457241759418}
   apMeterNumber: {fileID: 114190684848609188}
   healthMeter: {fileID: 224275119455834632}

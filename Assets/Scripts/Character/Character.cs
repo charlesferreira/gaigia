@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(ActionPoints))]
 [RequireComponent(typeof(SkillSet))]
@@ -7,13 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterMovement))]
 [RequireComponent(typeof(CharacterAnimations))]
 public class Character : MonoBehaviour {
-
-    [SerializeField] private Team _team;
-    [SerializeField] private Sprite _avatar;
-    [SerializeField] private StatsSheet _baseStats;
-
-    [SerializeField] private Weapon _weapon;
-    [SerializeField] private Armor _armor;
+    
+    private StatsSheet _baseStats;
+    private Weapon _weapon;
+    private Armor _armor;
 
     public ActionPoints AP { get; private set; }
     public SkillSet SkillSet { get; private set; }
@@ -24,8 +20,8 @@ public class Character : MonoBehaviour {
     public StatsSheet Stats { get; private set; }
     public Skill Skill { get { return SkillSet.CurrentSkill; } }
 
-    public Team Team { get { return _team; } }
-    public Sprite Avatar { get { return _avatar; } }
+    public Team Team { get; private set; }
+    public Sprite Avatar { get; private set; }
 
     public bool HasEnoughAP() {
         return AP.Left >= Skill.GetCost(this);
@@ -33,15 +29,27 @@ public class Character : MonoBehaviour {
 
     public Weapon Weapon {
         get { return _weapon ?? Weapon.Unarmed; }
-        private set { _weapon = value; }
+        private set {
+            _weapon = value ?? Weapon.Unarmed;
+            CalculateStats();
+        }
     }
 
     public Armor Armor {
         get { return _armor ?? Armor.Naked; }
-        private set { _armor = value; }
+        private set {
+            _armor = value ?? Armor.Naked;
+            CalculateStats();
+        }
     }
 
-    private StatsSheet BaseStats { get { return _baseStats ?? StatsSheet.Blank; } }
+    private StatsSheet BaseStats {
+        get { return _baseStats ?? StatsSheet.Blank; }
+        set {
+            _baseStats = value;
+            CalculateStats();
+        }
+    }
 
     public void SetActive(bool active) {
         Movement.SetActive(active);
@@ -50,22 +58,18 @@ public class Character : MonoBehaviour {
 
     public void Equip(Weapon weapon) {
         Weapon = weapon;
-        CalculateStats();
     }
 
     public void RemoveWeapon() {
         Weapon = Weapon.Unarmed;
-        CalculateStats();
     }
 
     public void Equip(Armor armor) {
         Armor = armor;
-        CalculateStats();
     }
 
     public void RemoveArmor() {
         Armor = Armor.Naked;
-        CalculateStats();
     }
 
     public void SelectNextSkill(SkillRange skillRange) {
@@ -76,6 +80,17 @@ public class Character : MonoBehaviour {
     public void SelectPreviousSkill(SkillRange skillRange) {
         SkillSet.SelectPreviousSkill();
         skillRange.SetRange(Skill.GetRange(this));
+    }
+
+    private void SetUp(CharacterPreset info) {
+        Avatar = info.Avatar;
+        Team = info.Team;
+        BaseStats = info.BaseStats;
+        Weapon = info.Weapon ?? Weapon.Unarmed;
+        Armor = info.Armor;
+
+        SkillSet.SetUp(info.Skills);
+        Animation.SetUp(info.AnimatorController);
     }
 
     private void Awake() {
@@ -91,9 +106,10 @@ public class Character : MonoBehaviour {
         Stats = BaseStats + Weapon.BonusStats + Armor.BonusStats;
     }
 
-    public static Character CreateInstance(CharacterPreset info) {
-        var mob = new GameObject(info.name);
-        return mob.AddComponent<Character>();
+    public static Character Instantiate(Character original, CharacterPreset info) {
+        var mob = Instantiate(original);
+        mob.SetUp(info);
+        return mob;
 
     }
 }

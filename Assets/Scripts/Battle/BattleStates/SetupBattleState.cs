@@ -1,9 +1,6 @@
 ﻿public class SetUpBattleState : ISimpleState<BattleManager> {
 
-    public void OnStateEnter(BattleManager bm) {
-        bm.ResetBattle();
-        bm.SetState<PrepareNextTurnBattleState>();
-    }
+    public void OnStateEnter(BattleManager bm) { }
 
     public void OnStateExit(BattleManager bm) { }
 

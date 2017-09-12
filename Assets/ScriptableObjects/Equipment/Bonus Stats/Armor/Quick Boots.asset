@@ -14,9 +14,9 @@ MonoBehaviour:
   vitality: 0
   mana: 0
   strength: 0
-  spirit: 0
+  mind: 0
   dexterity: 0
   charisma: 0
   luck: 0
-  baseMovement: 5
+  baseMovement: 20
   baseEnergy: 0

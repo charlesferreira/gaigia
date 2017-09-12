@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -10,10 +9,12 @@ public class BattleManager : SimpleStateMachine<BattleManager> {
     [SerializeField] private SkillTarget _skillTarget;
     [SerializeField] private SkillSetHUD _skillSetHUD;
     [SerializeField] private ActionSequence _actionSequence;
+    [SerializeField] private List<PlayerStatusHUD> playerStatusHUDList;
+    [SerializeField] private List<Transform> spawnPoints;
 
     private int ActiveCharacterIndex { get; set; }
     private int SelectedTargetIndex { get; set; }
-
+    
     public Character Character { get { return Characters[ActiveCharacterIndex]; } }
     public Character Target { get { return Targets[SelectedTargetIndex]; } }
     public IList<Character> Characters { get; private set; }
@@ -25,18 +26,6 @@ public class BattleManager : SimpleStateMachine<BattleManager> {
     public SkillTarget SkillTarget { get { return _skillTarget; } }
     public SkillSetHUD SkillSetHUD { get { return _skillSetHUD; } }
     public ActionSequence ActionSequence { get { return _actionSequence; } }
-
-    public void ResetBattle() {
-        ActiveCharacterIndex = -1;
-        CreateCharacters();
-    }
-
-    private void CreateCharacters() {
-        Characters = new List<Character>();
-        foreach (var character in PlayerParty.Instance.Characters) {
-            Characters.Add(character);
-        }
-    }
 
     public void SelectNextCharacter() {
         ActiveCharacterIndex += 1;
@@ -90,6 +79,20 @@ public class BattleManager : SimpleStateMachine<BattleManager> {
 
     protected new void Start() {
         base.Start();
+        ActiveCharacterIndex = -1;
+        CreateCharacters();
+        SetState<PrepareNextTurnBattleState>();
         ActionSequence.CreatePortraits(this);
+    }
+
+    private void CreateCharacters() {
+        Characters = new List<Character>();
+        var characters = PlayerParty.Instance.Characters;
+        for (var i = 0; i < characters.Count; i++) {
+            var character = characters[i];
+            Characters.Add(character);
+            character.transform.position = spawnPoints[i].position;
+            playerStatusHUDList[i].SetUp(character);
+        }
     }
 }

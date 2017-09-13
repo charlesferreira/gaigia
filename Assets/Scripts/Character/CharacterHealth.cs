@@ -21,6 +21,12 @@ public class CharacterHealth : MonoBehaviour {
         CreateHitText(amount, HitTextController.Type.Healing);
     }
 
+    public void SetUp() {
+        var stats = GetComponent<Character>().Stats;
+        HP = stats.MaxHP;
+        ME = stats.MaxME;
+    }
+
     private void CreateHitText(int amount, HitTextController.Type type) {
         var hitText = Instantiate(hitTextPrefab, sr.transform);
         hitText.SetText(amount.ToString(), type);
@@ -34,8 +40,6 @@ public class CharacterHealth : MonoBehaviour {
     }
 
     private void Start() {
-        var stats = GetComponent<Character>().Stats;
-        HP = stats.MaxHP;
-        ME = stats.MaxME;
+        SetUp();
     }
 }

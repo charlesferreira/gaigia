@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91c9caee1f4355349aaa66a80ff1d412, type: 3}
+  m_Name: Ayn 1
+  m_EditorClassIdentifier: 
+  _team: 0
+  _baseStats: {fileID: 11400000, guid: 31b84c221bf375242b830690daa338fd, type: 2}
+  _avatar: {fileID: 21300000, guid: d063e817a0bd6964a94d9523a3d38579, type: 3}
+  _animator: {fileID: 22100000, guid: 3b3f586999f6eb243915eb2afe8567b0, type: 2}
+  _armor: {fileID: 0}
+  _weapon: {fileID: 11400000, guid: b6da7bfc8c919424792a173097dab966, type: 2}
+  _skills:
+  - {fileID: 114644723556772978, guid: 7f9543d6f3383374991432f34cd3592a, type: 2}
+  - {fileID: 114685834251793068, guid: cddaf53d804a898418f4706021e3f47b, type: 2}
+  - {fileID: 114841202943652312, guid: 8f3047e2cbd3be34a9c0cd41fc2c75c0, type: 2}

@@ -3,7 +3,7 @@
 [RequireComponent(typeof(Rigidbody))]
 public class CharacterMovement : MonoBehaviour {
 
-    public const float MaxMovementSpeed = 30;
+    public const float MaxMovementSpeed = 50;
     public const int MovementPerUnit = 3;
 
     private static float animationSpeedMin = 1.0f;

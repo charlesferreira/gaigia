@@ -2,7 +2,7 @@
 
     public void OnStateEnter(BattleManager bm) {
         bm.Character.Skill.Cast(bm.Character, bm.Target, () => {
-            bm.SetState<PrepareNextTurnBattleState>();
+            bm.SetState<EndOfTurnBattleState>();
         });
     }
 

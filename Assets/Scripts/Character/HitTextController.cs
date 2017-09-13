@@ -25,7 +25,6 @@ public class HitTextController : MonoBehaviour {
 
     public void FixXScale() {
         var scale = transform.localScale;
-        print(scale);
         scale.x *= Mathf.Sign(scale.x);
         transform.localScale = scale;
     }

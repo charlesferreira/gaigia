@@ -26,6 +26,10 @@ public class ActionSequenceAvatar : MonoBehaviour {
         Color = active ? activeColor : idleColor;
     }
 
+    public void MarkDead() {
+        avatar.color = Color.white * 0.5f;
+    }
+
     private void Awake() {
         Color = idleColor;
     }

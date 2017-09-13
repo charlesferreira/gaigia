@@ -53,10 +53,7 @@ GameObject:
   - component: {fileID: 4746578560977562}
   - component: {fileID: 212421390702130196}
   - component: {fileID: 114562967837535338}
-  - component: {fileID: 65933901928394124}
-  - component: {fileID: 65760100606156606}
-  - component: {fileID: 65023053051053702}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1625618530736398}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.78, y: 0, z: -8.959999}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4746578560977562}
@@ -104,18 +101,6 @@ Transform:
   m_Father: {fileID: 4124550479047240}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &65023053051053702
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1977932876510080}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.69, y: 2.92, z: 0.2}
-  m_Center: {x: 0.075157166, y: 0.87, z: 0}
 --- !u!65 &65626939450929184
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -128,30 +113,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
---- !u!65 &65760100606156606
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1977932876510080}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.06, y: 2.92, z: 0.2}
-  m_Center: {x: 0.075157166, y: 3.06, z: 0}
---- !u!65 &65933901928394124
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1977932876510080}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.4, y: 1.7, z: 0.2}
-  m_Center: {x: 0.18, y: 5.26, z: 0}
 --- !u!114 &114562967837535338
 MonoBehaviour:
   m_ObjectHideFlags: 1

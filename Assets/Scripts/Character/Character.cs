@@ -23,9 +23,9 @@ public class Character : MonoBehaviour {
     public Team Team { get; private set; }
     public Sprite Avatar { get; private set; }
 
-    public bool HasEnoughAP() {
-        return AP.Left >= Skill.GetCost(this);
-    }
+    public bool IsAlive { get { return Health.HP > 0; } }
+
+    public bool HasEnoughAP() { return AP.Left >= Skill.GetCost(this); }
 
     public Weapon Weapon {
         get { return _weapon ?? Weapon.Unarmed; }
@@ -91,6 +91,7 @@ public class Character : MonoBehaviour {
 
         SkillSet.SetUp(info.Skills);
         Animation.SetUp(info.AnimatorController);
+        Health.SetUp();
     }
 
     private void Awake() {

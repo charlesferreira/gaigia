@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ActionSequence : MonoBehaviour {
@@ -25,6 +26,10 @@ public class ActionSequence : MonoBehaviour {
             avatar.transform.position = lastPosition;
             lastPosition += Vector3.right * avatarWidth;
         }
+    }
+
+    public void MarkDead(int i) {
+        avatars[i].MarkDead();
     }
 
     private void Awake() {

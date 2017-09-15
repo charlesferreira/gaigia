@@ -82,9 +82,9 @@ public class Character : MonoBehaviour {
         skillRange.SetRange(Skill.GetRange(this));
     }
 
-    private void SetUp(CharacterPreset info) {
+    public void SetUp(CharacterPreset info, Team team) {
         Avatar = info.Avatar;
-        Team = info.Team;
+        Team = team;
         BaseStats = info.BaseStats;
         Weapon = info.Weapon ?? Weapon.Unarmed;
         Armor = info.Armor;
@@ -105,12 +105,5 @@ public class Character : MonoBehaviour {
 
     private void CalculateStats() {
         Stats = BaseStats + Weapon.BonusStats + Armor.BonusStats;
-    }
-
-    public static Character Instantiate(Character original, CharacterPreset info) {
-        var mob = Instantiate(original);
-        mob.SetUp(info);
-        return mob;
-
     }
 }

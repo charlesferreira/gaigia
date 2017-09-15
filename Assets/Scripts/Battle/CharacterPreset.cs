@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Character/Preset")]
 public class CharacterPreset : ScriptableObject {
 
     [Header("General")]
-    [SerializeField] private Team _team;
+    [SerializeField] private Character _prefab;
     [SerializeField] private StatsSheet _baseStats;
 
     [Header("Graphics")]
@@ -19,7 +20,6 @@ public class CharacterPreset : ScriptableObject {
     [Header("Skill Set")]
     [SerializeField] private List<Skill> _skills;
     
-    public Team Team { get { return _team; } }
     public StatsSheet BaseStats { get { return _baseStats; } }
 
     public Sprite Avatar { get { return _avatar; } }
@@ -29,4 +29,12 @@ public class CharacterPreset : ScriptableObject {
     public Armor Armor { get { return _armor; } }
 
     public List<Skill> Skills { get { return _skills; } }
+
+    public Character Instantiate(Team team, Vector3 spawnPoint) {
+        var mob = Instantiate(_prefab);
+        mob.SetUp(this, team);
+        mob.transform.position = spawnPoint;
+        return mob;
+    }
+
 }

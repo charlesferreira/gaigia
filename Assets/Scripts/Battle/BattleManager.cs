@@ -11,10 +11,8 @@ public class BattleManager : SimpleStateMachine<BattleManager> {
     [SerializeField] private SkillSetHUD _skillSetHUD;
     [SerializeField] private ActionSequence _actionSequence;
     [SerializeField] private List<PlayerStatusHUD> playerStatusHUDList;
-    [SerializeField] private List<Transform> spawnPoints;
 
     [Header("Temp")]
-    public EnemyParty enemyParty;
     public GameObject gameOverVictory;
     public GameObject gameOverDefeat;
 
@@ -97,22 +95,21 @@ public class BattleManager : SimpleStateMachine<BattleManager> {
         };
     }
 
-    private void CreateCharacters() {
+    private void SetUpPlayerCharacters() {
         Characters = new List<Character>();
-        var characters = PlayerParty.Instance.Characters;
-        for (var i = 0; i < characters.Count; i++) {
+        CombatInfo.Instance.ResetPlayerPositions();
+        var characters = CombatInfo.Instance.PlayerCharacters;
+        for (var i = 0; i < characters.Length; i++) {
             var character = characters[i];
             Characters.Add(character);
-            character.transform.position = spawnPoints[i].position;
             playerStatusHUDList[i].SetUp(character);
         }
     }
 
     private void CreateEnemies() {
-        var enemies = enemyParty.Characters;
-        for (var i = 0; i < enemies.Count; i++) {
-            var character = enemies[i];
-            Characters.Add(character);
+        var enemies = CombatInfo.Instance.EnemyParty.CreateCharacters();
+        for (var i = 0; i < enemies.Length; i++) {
+            Characters.Add(enemies[i]);
         }
     }
     
@@ -152,7 +149,7 @@ public class BattleManager : SimpleStateMachine<BattleManager> {
     protected new void Start() {
         base.Start();
         ActiveCharacterIndex = -1;
-        CreateCharacters();
+        SetUpPlayerCharacters();
 
         // temp
         CreateEnemies();

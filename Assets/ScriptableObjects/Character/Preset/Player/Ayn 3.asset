@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91c9caee1f4355349aaa66a80ff1d412, type: 3}
   m_Name: Ayn 3
   m_EditorClassIdentifier: 
-  _team: 0
+  _prefab: {fileID: 114261376699542310, guid: d3214e8b52658aa4997cbfa10070486b, type: 2}
   _baseStats: {fileID: 11400000, guid: 8293f429187399948a7d26082f43a3bc, type: 2}
   _avatar: {fileID: 21300000, guid: d063e817a0bd6964a94d9523a3d38579, type: 3}
   _animator: {fileID: 22100000, guid: 3b3f586999f6eb243915eb2afe8567b0, type: 2}

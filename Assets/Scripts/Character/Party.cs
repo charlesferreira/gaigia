@@ -6,6 +6,7 @@ public class Party : ScriptableObject {
     [SerializeField] private Team team;
     [SerializeField] private PartyMember[] members;
 
+    public Team Team { get { return team; } }
     public PartyMember[] Members { get { return members; } }
 
     public Character[] CreateCharacters() {

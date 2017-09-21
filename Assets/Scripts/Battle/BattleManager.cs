@@ -132,13 +132,13 @@ public class BattleManager : SimpleStateMachine<BattleManager> {
         else
             gameOverDefeat.SetActive(true);
 
-        StartCoroutine(ResetToTitleScreen());
+        StartCoroutine(BackToDungeon());
     }
 
-    private IEnumerator ResetToTitleScreen() {
-        yield return new WaitForSecondsRealtime(4);
+    private IEnumerator BackToDungeon() {
+        yield return new WaitForSecondsRealtime(3);
 
-        Application.Quit();
+        Scenes.LoadSingle(Scenes.Dungeon);
     }
 
     protected new void Awake() {

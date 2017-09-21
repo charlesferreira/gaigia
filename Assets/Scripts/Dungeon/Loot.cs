@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class Loot : MonoBehaviour {
 
     [SerializeField] private SpriteRenderer containerSprite;

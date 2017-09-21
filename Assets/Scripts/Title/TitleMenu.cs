@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class TitleMenu : MonoBehaviour {
 
@@ -35,8 +34,7 @@ public class TitleMenu : MonoBehaviour {
         print("Selected: " + currentItem);
         switch (currentItem) {
             case 0:
-                print("Carregar próxima cena");
-                SceneManager.LoadScene(1);
+                Scenes.LoadSingle(Scenes.Battle);
                 break;
 
             case 1:

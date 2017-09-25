@@ -3,7 +3,7 @@
 [RequireComponent(typeof(Rigidbody))]
 public class CharacterMovement : MonoBehaviour {
 
-    public const float MaxMovementSpeed = 50;
+    public const float MaxMovementSpeed = 10;
     public const int MovementPerUnit = 3;
 
     private static float animationSpeedMin = 1.0f;
@@ -19,7 +19,12 @@ public class CharacterMovement : MonoBehaviour {
     private Vector2 Input { get; set; }
     private Vector3 Center { get; set; }
     private float MaxDistance { get { return (float) character.Stats.Movement / MovementPerUnit; } }
-    private float MovementSpeed { get { return movementSpeedFactor * Mathf.Min(MaxMovementSpeed, character.Stats.Movement); } }
+    private float MovementSpeed {
+        get {
+            //return movementSpeedFactor * Mathf.Min(MaxMovementSpeed, character.Stats.Movement);
+            return MaxMovementSpeed;
+        }
+    }
     private int MaxMovementPoints { get { return MovementArea.MaxMovementPoints; } }
 
     public void SetActive(bool active) {

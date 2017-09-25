@@ -67,7 +67,7 @@ public class BattleManager : SimpleStateMachine<BattleManager> {
 
     public void UpdateTargets() {
         Targets = Characters
-            .Where(x => Character.Skill.Hits(Character, x))
+            .Where(x => x.Health.HP > 0 && Character.Skill.Hits(Character, x))
             .OrderBy(x => x.SqrDistance(Character)).ToList();
     }
 

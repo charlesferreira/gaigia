@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CharacterAnimations : MonoBehaviour {
 
+    [SerializeField]
     private Animator anim;
     private Dictionary<Direction, int> layerIndices;
     private CharacterAnimationState currentState;
@@ -36,7 +37,6 @@ public class CharacterAnimations : MonoBehaviour {
     }
 
     private void Awake() {
-        anim = GetComponentInChildren<Animator>();
         layerIndices = new Dictionary<Direction, int>();
         foreach (Direction direction in Enum.GetValues(typeof(Direction))) {
             layerIndices[direction] = anim.GetLayerIndex(direction.ToString());

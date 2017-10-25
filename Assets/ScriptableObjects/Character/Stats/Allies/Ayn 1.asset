@@ -15,7 +15,7 @@ MonoBehaviour:
   mana: 10
   strength: 9
   mind: 2
-  dexterity: 12
+  dexterity: 9
   charisma: 10
   luck: 5
   baseMovement: 10

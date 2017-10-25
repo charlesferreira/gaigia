@@ -1,5 +1,6 @@
 ﻿public enum CharacterAnimationState {
     Idle,
     Walking,
-    Casting
+    Casting,
+    Attacking,
 }

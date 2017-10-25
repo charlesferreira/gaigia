@@ -8,18 +8,20 @@ public class MeleeAttack : Skill {
 
     public override IEnumerator OnCast(Character source, Character target) {
         var camera = CameraMan.Instance;
-
+        
         camera.SetTarget(source.transform);
-        source.Animation.SetState(CharacterAnimationState.Casting);
-        yield return new WaitForSeconds(1);
-
-        camera.SetTarget(target.transform);
         source.Animation.SetState(CharacterAnimationState.Idle);
-        target.Animation.SetState(CharacterAnimationState.Casting);
+        yield return new WaitForSeconds(0.3f);
 
-        yield return new WaitForSeconds(1.0f);
+        source.Animation.SetState(CharacterAnimationState.Attacking);
+        target.Animation.SetState(CharacterAnimationState.Idle);
+
+        yield return new WaitForSeconds(0.5f);
+        camera.SetTarget(target.transform);
+        yield return new WaitForSeconds(0.5f);
         target.Animation.SetState(CharacterAnimationState.Idle);
         target.Health.TakeDamage(CalculateDamage(source, target));
+        yield return new WaitForSeconds(0.2f);
     }
 
     public override string GetName(Character character) {

@@ -114,6 +114,7 @@ public class BattleManager : SimpleStateMachine<BattleManager> {
     }
     
     private void OrderByDexterity() {
+        /*
         var rng = new System.Random();
         var list = Characters;
         int n = list.Count;
@@ -124,6 +125,12 @@ public class BattleManager : SimpleStateMachine<BattleManager> {
             Characters[k] = Characters[n];
             list[n] = value;
         }
+        */
+        Characters = Characters.OrderBy(character => {
+            return -character.Stats.Dexterity;
+        }).ThenByDescending(x => {
+            return Random.Range(0f, 1f) > 0.5f;
+        }).ToList();
     }
 
     public void ShowGameOverScreen() {

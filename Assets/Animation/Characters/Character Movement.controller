@@ -13,25 +13,25 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Idle
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Casting
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Attacking
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Down
@@ -64,7 +64,7 @@ AnimatorController:
       m_Motion: {fileID: 7400000, guid: 919e57fbcf24d6d4b8d5995580ad1522, type: 2}
     - serializedVersion: 2
       m_State: {fileID: 1102075000103613108}
-      m_Motion: {fileID: 7400000, guid: 431d89aee231be44f80c57d5e9b16569, type: 2}
+      m_Motion: {fileID: 7400000, guid: a761b4d1e1118de4bb16ebfff61bcacb, type: 2}
     m_Behaviours: []
     m_BlendingMode: 0
     m_SyncedLayerIndex: 0
@@ -88,7 +88,7 @@ AnimatorController:
       m_Motion: {fileID: 7400000, guid: 22da315ccc51c3a47aca68f616adc30a, type: 2}
     - serializedVersion: 2
       m_State: {fileID: 1102075000103613108}
-      m_Motion: {fileID: 7400000, guid: a2d098683d31ffa40bc9ef4a713aeda9, type: 2}
+      m_Motion: {fileID: 7400000, guid: 315fd78afa000d443bfd3a72ccaf03ae, type: 2}
     m_Behaviours: []
     m_BlendingMode: 0
     m_SyncedLayerIndex: 0
@@ -112,7 +112,7 @@ AnimatorController:
       m_Motion: {fileID: 7400000, guid: 22da315ccc51c3a47aca68f616adc30a, type: 2}
     - serializedVersion: 2
       m_State: {fileID: 1102075000103613108}
-      m_Motion: {fileID: 7400000, guid: 1cdb3b740cbcc2b45a59e0660814c3ea, type: 2}
+      m_Motion: {fileID: 7400000, guid: b11ac75e70d519e4f8bf28676efee975, type: 2}
     m_Behaviours: []
     m_BlendingMode: 0
     m_SyncedLayerIndex: 0

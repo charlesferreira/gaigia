@@ -145,7 +145,8 @@ public class BattleManager : SimpleStateMachine<BattleManager> {
     private IEnumerator BackToDungeon() {
         yield return new WaitForSecondsRealtime(3);
 
-        Scenes.LoadSingle(Scenes.Dungeon);
+        //Scenes.LoadSingle(Scenes.Dungeon);
+        DungeonManager.Instance.BackToDungeon();
     }
 
     protected new void Awake() {

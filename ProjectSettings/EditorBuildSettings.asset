@@ -8,9 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Title.unity
     guid: ef03559bcbb5b804cbeed1239e594b09
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Dungeon.unity
     guid: 07cab1f7e0a2cf241952b07f2fedabed
+  - enabled: 1
+    path: Assets/Scenes/Dungeon_2.unity
+    guid: baad3dec5ec8300449bb4e00ba649957
   - enabled: 1
     path: Assets/Scenes/Battle.unity
     guid: 8c544b55cd250e44c80de25567bfa9d4

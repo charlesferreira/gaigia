@@ -34,11 +34,12 @@ public class TitleMenu : MonoBehaviour {
         print("Selected: " + currentItem);
         switch (currentItem) {
             case 0:
-                Scenes.LoadSingle(Scenes.Battle);
+                //Scenes.LoadSingle(Scenes.Battle);
+                GetComponent<Utility.LoadSceneOnClick>().LoadScene();
                 break;
 
             case 1:
-                Application.Quit();
+                GetComponent<Utility.QuitOnClick>().Quit();
                 break;
         }
     }

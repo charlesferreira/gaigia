@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344185aa067a365419f713c52dd13d17, type: 3}
+  m_Name: Player
+  m_EditorClassIdentifier: 
+  team: 0
+  members:
+  - preset: {fileID: 11400000, guid: 480b18ea9479bdd46974b143014284d0, type: 2}
+    spawnPoint: {x: 0, y: 0, z: -1}
+  - preset: {fileID: 11400000, guid: f9af2c206bec63440b90107f4bc2d7e4, type: 2}
+    spawnPoint: {x: -3, y: 0, z: -2}
+  - preset: {fileID: 11400000, guid: b47e2b0d0a853a54499425311361dad2, type: 2}
+    spawnPoint: {x: -5, y: 0, z: -1}
+  - preset: {fileID: 11400000, guid: dae52d6eff937334caa31561d2a43dc2, type: 2}
+    spawnPoint: {x: 5, y: 0, z: -2}
+  - preset: {fileID: 11400000, guid: 91f41a6f81187414f98504503c97506e, type: 2}
+    spawnPoint: {x: 2.5, y: 0, z: -1.25}

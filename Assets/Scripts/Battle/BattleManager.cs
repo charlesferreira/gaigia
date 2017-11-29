@@ -13,6 +13,7 @@ public class BattleManager : SimpleStateMachine<BattleManager> {
     [SerializeField] private List<PlayerStatusHUD> playerStatusHUDList;
 
     [Header("Temp")]
+    public float victoryScreenDuration = 8;
     public GameObject gameOverVictory;
     public GameObject gameOverDefeat;
 
@@ -97,7 +98,7 @@ public class BattleManager : SimpleStateMachine<BattleManager> {
 
     private void SetUpPlayerCharacters() {
         Characters = new List<Character>();
-        CombatInfo.Instance.ResetPlayerPositions();
+        CombatInfo.Instance.ResetPlayerParty();
         var characters = CombatInfo.Instance.PlayerCharacters;
         for (var i = 0; i < characters.Length; i++) {
             var character = characters[i];
@@ -134,16 +135,19 @@ public class BattleManager : SimpleStateMachine<BattleManager> {
     }
 
     public void ShowGameOverScreen() {
-        if (HasAlive(Team.Player))
+        if (HasAlive(Team.Player)) {
+            Jukebox.Instance.Victory();
             gameOverVictory.SetActive(true);
-        else
+        }
+        else {
             gameOverDefeat.SetActive(true);
+        }
 
         StartCoroutine(BackToDungeon());
     }
 
     private IEnumerator BackToDungeon() {
-        yield return new WaitForSecondsRealtime(3);
+        yield return new WaitForSecondsRealtime(victoryScreenDuration);
 
         //Scenes.LoadSingle(Scenes.Dungeon);
         DungeonManager.Instance.BackToDungeon();

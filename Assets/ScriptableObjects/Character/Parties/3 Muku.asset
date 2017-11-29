@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344185aa067a365419f713c52dd13d17, type: 3}
+  m_Name: 3 Muku
+  m_EditorClassIdentifier: 
+  team: 1
+  members:
+  - preset: {fileID: 11400000, guid: 1b5965e3066804744b217227b9ed51bf, type: 2}
+    spawnPoint: {x: -2.8195488, y: 0, z: 4.398496}
+  - preset: {fileID: 11400000, guid: 1b5965e3066804744b217227b9ed51bf, type: 2}
+    spawnPoint: {x: 0.62030077, y: 0, z: 2.9887218}
+  - preset: {fileID: 11400000, guid: 1b5965e3066804744b217227b9ed51bf, type: 2}
+    spawnPoint: {x: 3.5526316, y: 0, z: 4.62406}

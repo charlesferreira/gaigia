@@ -4,6 +4,7 @@ using UnityEngine;
 public class DungeonMonster : DungeonCharacter {
 
     [Header("Monster")]
+    public Party party;
     public Transform waypointsContainer;
     [Range(0, 10)] public float minRestingTime = 1f;
     [Range(0, 10)] public float maxRestingTime = 2f;
@@ -17,8 +18,16 @@ public class DungeonMonster : DungeonCharacter {
 
     protected override void Awake() {
         base.Awake();
+
+        if (DungeonManager.Instance.monstersToRemove.Contains(name)) {
+            Destroy(gameObject);
+            return;
+        }
+
         waypoints = waypointsContainer.GetComponentsInChildren<Transform>();
         transform.position = waypoints[waypoints.Length - 1].position;
+        //var wpPos = waypoints[waypoints.Length - 1].position;
+        //transform.position = new Vector3(wpPos.x, transform.position.y, wpPos.z);
     }
 
     protected override Vector2 GetInput() {
@@ -51,6 +60,7 @@ public class DungeonMonster : DungeonCharacter {
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Player")) {
+            enabled = false;
             DungeonManager.Instance.StartBattleWith(this);
         }
     }

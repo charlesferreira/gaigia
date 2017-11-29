@@ -25,6 +25,7 @@ public class PlayerStatusHUD : MonoBehaviour {
     }
 
     private void Update() {
+        //print(Character);
         apMeterNumber.text = Character.AP.Left.ToString();
 
         var hpRatio = (float)Character.Health.HP / Character.Stats.MaxHP;

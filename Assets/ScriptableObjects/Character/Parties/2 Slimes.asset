@@ -14,6 +14,6 @@ MonoBehaviour:
   team: 1
   members:
   - preset: {fileID: 11400000, guid: 20503e640757cb246a62c27175d2adbe, type: 2}
-    spawnPoint: {x: 8.217054, y: 0, z: 7.010309}
+    spawnPoint: {x: 4.1165414, y: 0, z: 4.567669}
   - preset: {fileID: 11400000, guid: 20503e640757cb246a62c27175d2adbe, type: 2}
-    spawnPoint: {x: -10.077519, y: 0, z: 10.103093}
+    spawnPoint: {x: -2.199248, y: 0, z: 4.285714}

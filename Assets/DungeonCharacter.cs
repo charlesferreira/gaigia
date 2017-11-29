@@ -2,9 +2,9 @@
 
 public class DungeonCharacter : MonoBehaviour {
 
-    private static float animationSpeedMin = 1.0f;
-    private static float animationSpeedMax = 1.8f;
-    private static float animationSpeedFactor = 2f;
+    public float animationSpeedMin = 1.0f;
+    public float animationSpeedMax = 1.8f;
+    public float animationSpeedFactor = 2f;
 
     [Header("Character")]
     public float movementSpeed = 10;

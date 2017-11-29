@@ -3,14 +3,9 @@ using System.Collections;
 using Utility;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System;
 
 [RequireComponent(typeof(Fading))]
-public class DungeonManager : MonoBehaviour {
-
-    private static DungeonManager instance;
-
-    public static DungeonManager Instance { get { return instance; } }
+public class DungeonManager : Singleton<DungeonManager> {
 
     public Vector3 PlayerPosition { get { return playerPosition; } }
 
@@ -20,13 +15,17 @@ public class DungeonManager : MonoBehaviour {
     bool isFading = false;
     private Vector3 playerPosition;
 
-    List<string> monstersToRemove = new List<string>();
+    [HideInInspector]
+    public List<string> monstersToRemove = new List<string>();
 
     public void StartBattleWith(DungeonMonster enemy) {
-        print("Lutará contra: " + enemy.name);
-        if (isFading)
+        if (isFading || monstersToRemove.Contains(enemy.name))
             return;
 
+        Jukebox.Instance.Battle();
+        GameObject.Find("Player").GetComponent<DungeonCharacter>().enabled = false;
+
+        CombatInfo.Instance.EnemyParty = enemy.party;
         monstersToRemove.Add(enemy.name);
 
         RememberPlayerPosition();
@@ -34,20 +33,24 @@ public class DungeonManager : MonoBehaviour {
     }
 
     private void RememberPlayerPosition() {
-        playerPosition = GameObject.Find("Player").transform.position;
+        var player = GameObject.Find("Player");
+        if (player) {
+            playerPosition = GameObject.Find("Player").transform.position;
+        }
     }
 
     public void BackToDungeon() {
         if (isFading)
             return;
-        
+
+        Jukebox.Instance.Dungeon();
         StartCoroutine(FadeOut(dungeonScene, true));
     }
 
     private IEnumerator FadeOut(SceneField nextScene, bool enablePlayerAfter) {
         isFading = true;
 
-        var fading = GetComponent<Fading>();
+        var fading = FindObjectOfType<Fading>();
         fading.BeginFade(Fading.Direction.FadeOut);
         yield return new WaitForSeconds(fading.FadingDuration);
 
@@ -57,18 +60,13 @@ public class DungeonManager : MonoBehaviour {
     }
 
     private void Awake() {
-        print("Removendo inimigos: " + monstersToRemove);
-        for (int i = 0; i < monstersToRemove.Count; i++) {
-            GameObject.Find(monstersToRemove[i]).gameObject.SetActive(false);
-        }
-
-        if (instance != null) {
+        if (Instance != null && Instance != this) {
             Destroy(gameObject);
             return;
         }
 
-        instance = this;
         DontDestroyOnLoad(gameObject);
         RememberPlayerPosition();
+        Jukebox.Instance.Dungeon();
     }
 }

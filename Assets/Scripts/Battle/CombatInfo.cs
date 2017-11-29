@@ -1,18 +1,34 @@
 ﻿using UnityEngine;
 
-public class CombatInfo : Singleton<CombatInfo> {
+public class CombatInfo : MonoBehaviour {
+
+    private static CombatInfo instance;
+
+    public static CombatInfo Instance {
+        get {
+            if (instance == null)
+                instance = FindObjectOfType<CombatInfo>();
+
+            return instance;
+        }
+    }
 
     [SerializeField] private Party playerParty;
 
     public Party EnemyParty { get; set; }
     public Character[] PlayerCharacters { get; private set; }
 
-    public void ResetPlayerPositions() {
-        for (int i = 0; i < PlayerCharacters.Length; i++)
-            PlayerCharacters[i].transform.position = playerParty.Members[i].spawnPoint;
+    public void ResetPlayerParty() {
+        PlayerCharacters = playerParty.CreateCharacters();
     }
 
     private void Awake() {
-        PlayerCharacters = playerParty.CreateCharacters();
+        if (instance != null) {
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 }

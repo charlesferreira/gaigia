@@ -100,7 +100,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1233474768861486}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.22, y: 0, z: -38.18}
+  m_LocalPosition: {x: 23.59, y: 0, z: -32.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4566364604360720}
@@ -226,6 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 2.5
+  party: {fileID: 11400000, guid: 79d297e445fd9bd4e881c6205823c94c, type: 2}
   waypointsContainer: {fileID: 0}
   minRestingTime: 0
   maxRestingTime: 0

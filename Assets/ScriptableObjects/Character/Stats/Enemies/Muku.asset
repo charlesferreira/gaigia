@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e3d86864451c1146955ebc642db33e4, type: 3}
   m_Name: Muku
   m_EditorClassIdentifier: 
-  vitality: 9
+  vitality: 5
   mana: 7
   strength: 5
   mind: 2

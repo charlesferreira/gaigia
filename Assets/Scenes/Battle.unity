@@ -2392,7 +2392,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1214195576}
   - component: {fileID: 1214195577}
-  - component: {fileID: 1214195578}
   m_Layer: 0
   m_Name: Battle Manager
   m_TagString: Untagged
@@ -2435,20 +2434,9 @@ MonoBehaviour:
   - {fileID: 1228602569}
   - {fileID: 1631375621}
   - {fileID: 1909108852}
+  victoryScreenDuration: 5
   gameOverVictory: {fileID: 1195033242}
   gameOverDefeat: {fileID: 2068453681}
---- !u!114 &1214195578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1214195575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fac5c14d9cd80934cb341ed8463a1118, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerParty: {fileID: 11400000, guid: ecebb39e8d832d94d8914d41d7749444, type: 2}
 --- !u!114 &1228602569 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114433461720241332, guid: 4620146dee5eb78449da8360bac4f3fa,
@@ -2878,7 +2866,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1516679067
 SpriteRenderer:
@@ -3977,47 +3965,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2045316285}
---- !u!1 &2048643892
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 2048643894}
-  - component: {fileID: 2048643893}
-  m_Layer: 0
-  m_Name: Demo Battle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2048643893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2048643892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcd31b8c2fbf76141b336420c50f9c2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyParty: {fileID: 11400000, guid: 79d297e445fd9bd4e881c6205823c94c, type: 2}
---- !u!4 &2048643894
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2048643892}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2058578006
 GameObject:
   m_ObjectHideFlags: 0

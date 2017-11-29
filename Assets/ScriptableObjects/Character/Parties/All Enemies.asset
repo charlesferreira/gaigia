@@ -14,10 +14,12 @@ MonoBehaviour:
   team: 1
   members:
   - preset: {fileID: 11400000, guid: 20503e640757cb246a62c27175d2adbe, type: 2}
-    spawnPoint: {x: -5.2682924, y: 0, z: 2.195122}
+    spawnPoint: {x: -5.483559, y: 0, z: 5.0193424}
   - preset: {fileID: 11400000, guid: b4f1a7ffbad817248ae44fec95ecfc3c, type: 2}
-    spawnPoint: {x: 7.4634147, y: 0, z: 0.65853655}
+    spawnPoint: {x: -7.3404255, y: 0, z: 3.27853}
   - preset: {fileID: 11400000, guid: 1b5965e3066804744b217227b9ed51bf, type: 2}
-    spawnPoint: {x: 1.7560976, y: 0, z: 4.097561}
+    spawnPoint: {x: 5.8897486, y: 0, z: 3.974855}
   - preset: {fileID: 11400000, guid: 3ea5dc168c5c10c48a1f659cd03e0b38, type: 2}
-    spawnPoint: {x: 3.0731707, y: 0, z: 8.487804}
+    spawnPoint: {x: -0.029013539, y: 0, z: 6.5860734}
+  - preset: {fileID: 11400000, guid: 20503e640757cb246a62c27175d2adbe, type: 2}
+    spawnPoint: {x: 10.299807, y: 0, z: 3.1044488}

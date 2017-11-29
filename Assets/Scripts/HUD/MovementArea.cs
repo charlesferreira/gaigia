@@ -3,7 +3,7 @@
 public class MovementArea : MonoBehaviour {
 
     public const int MaxMovementPoints = 5;
-    public const int BaseCharacterMovement = 15;
+    public const int BaseCharacterMovement = 12;
 
     [SerializeField] private SpriteRenderer circlePrefab;
     [SerializeField] private Transform spritesContainer;

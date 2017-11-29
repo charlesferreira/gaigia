@@ -2434,7 +2434,7 @@ MonoBehaviour:
   - {fileID: 1228602569}
   - {fileID: 1631375621}
   - {fileID: 1909108852}
-  victoryScreenDuration: 5
+  victoryScreenDuration: 6
   gameOverVictory: {fileID: 1195033242}
   gameOverDefeat: {fileID: 2068453681}
 --- !u!114 &1228602569 stripped
